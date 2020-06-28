@@ -1,0 +1,66 @@
+
+<div class="footer">
+  <div class="row">
+    <div class="col-sm">
+      <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <mat-header-cell *matHeaderCellDef> NOVEDADES </mat-header-cell>
+              <mat-cell style="width: 250px;height: 100px;" *matCellDef class="example-second-header-row">
+                <form class="example-form">
+                  <mat-form-field class="example-full-width">
+                    <mat-label style="font-size: 16px;">Email</mat-label>
+                    <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                          placeholder="Ej. pat@example.com" style="font-size: 16px;">
+                    <mat-hint style="font-size: 16px;">Suscribete!</mat-hint>
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')" style="font-size: 15px;">
+                      Ingrese un email valido.
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('required')" style="font-size: 16px;">
+                      Email es <strong style="font-size: 17px;">requerido</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </form>
+              </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+      </div>
+
+      <div class="col-sm">
+        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <mat-header-cell *matHeaderCellDef> CONTACTANOS </mat-header-cell>
+            <mat-cell style="width: 500px;height: 100px;" *matCellDef class="example-second-header-row">
+              <p style="font-size: 15px;">Para cualquier duda o información puedes llamarnos al Tel. 6308 2340
+                ventasweb@gameskamel.com.mx</p>
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+      </div>
+
+      <div class="col-sm">
+        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <mat-header-cell *matHeaderCellDef> SIGUENOS </mat-header-cell>
+            <mat-cell *matCellDef class="example-second-header-row">
+              <a href="#"><i class="fab fa-facebook fa-3x"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+  </div>
+
+</div>
+
+
