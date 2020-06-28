@@ -29,6 +29,8 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+//Comando de voz
+import {SpeechSynthesisModule} from '@kamiazya/ngx-speech-synthesis';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,13 @@ import { MatMenuModule } from '@angular/material/menu';
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    SpeechSynthesisModule.forRoot({
+      lang: 'es-MX',
+      volume: 1.0,
+      pitch: 1.0,
+      rate: 1.0,
+    })
   ],
   providers: [JuegoService],
   bootstrap: [AppComponent]
