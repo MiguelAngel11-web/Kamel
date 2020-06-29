@@ -76,7 +76,7 @@ import { CodigoQRComponent } from './usuarios/codigo-qr/codigo-qr.component';
       rate: 1.0,
     }),
     AngularFireModule.initializeApp(
-        {
+        {},{
         apiKey: "AIzaSyACuw8o9wJT_yX1sMlAhqJbQYqwG5JBNnI",
         authDomain: "kamel-6e19d.firebaseapp.com",
         databaseURL: "https://kamel-6e19d.firebaseio.com",
