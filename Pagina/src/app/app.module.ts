@@ -55,8 +55,7 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     PanelComponent,
     DashboardComponent,
     RegistroComponent,
-    CodigoQRComponent,
-    NgxQRCodeModule
+    CodigoQRComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +90,8 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
         }
     ),
     AngularFireAnalyticsModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    NgxQRCodeModule
   ],
   providers: [JuegoService],
   bootstrap: [AppComponent]
