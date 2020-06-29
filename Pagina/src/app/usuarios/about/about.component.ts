@@ -8,7 +8,8 @@ import { SpeechSynthesisUtteranceFactoryService,SpeechSynthesisService } from '@
 })
 export class AboutComponent implements OnInit {
 
-  contents = [
+  repetir : boolean = true;
+  leer = [
     'GAMES KAMEL',
     'Acerca de Nosotros',
     'Fundada en 1998',
@@ -24,27 +25,29 @@ export class AboutComponent implements OnInit {
     'Lo que pretendemos transmitir es una opción de adquirir un videojuego de forma sencilla, cómoda y agradable. Nuestro catalogo tendrá un precio especial a comparación de otras p+aginas de ventas de videojuegos.',
   ];
 
-  constructor(public f: SpeechSynthesisUtteranceFactoryService,public svc: SpeechSynthesisService) { }
+  constructor(public servicio: SpeechSynthesisUtteranceFactoryService,public speech: SpeechSynthesisService) {
 
-  speech() {
-    for (const text of this.contents) {
-      const v = this.f.text(text);
-      this.svc.speak(this.f.text(text));
+   }
+
+  AudioLeer() {
+    if(!this.repetir){
+    this.speech.cancel();
+    this.repetir=true;
     }
+    else{
+    for (const audio of this.leer) {
+      this.speech.speak(this.servicio.text(audio));
+    }
+    this.repetir=false;
+    }
+    console.log(this.repetir)
   }
 
-  cancel() {
-    this.svc.cancel();
-  }
-  pause() {
-    this.svc.pause();
-  }
-
-  resume() {
-    this.svc.resume();
+  Parar() {
+    this.speech.pause();
+    this.repetir =true;
   }
 
   ngOnInit(): void {
   }
-
 }
