@@ -1,17 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   mode = new FormControl('over');
 
-  forma: FormGroup;
+  itemList: AngularFireList<any>;
+  items: Observable<any>;
+  ban:boolean=false;
+
+  form;
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
@@ -27,23 +34,46 @@ export class DashboardComponent {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) {
-    this.forma = new FormGroup({
-      nombre: new FormControl('', [
-        Validators.required,
-        Validators.minLength(3),
-      ]),
-      apellido: new FormControl('', Validators.required),
-      correo: new FormControl('', [
-        Validators.required,
-        Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
-      ]),
+  constructor(private breakpointObserver: BreakpointObserver,private db: AngularFireDatabase, private fb: FormBuilder) {
+    this.form = fb.group({
+      nombre: ['', Validators.required],
+     descripcion: ['', Validators.required],
+     consola: ['', Validators.required],
+     img: ['', Validators.required],
+     precio: ['', [
+       Validators.required,
+       Validators.maxLength(6),
+       Validators.minLength(3),
+       Validators.pattern(/^\d+$/)
+      ]]
     });
+
+    this.itemList = db.list('games');
   }
 
-  guardarCambios(): void {
-    console.log('metodo guardarCambios');
-    console.log(this.forma);
-    console.log(this.forma.value);
+  submit() {
+    if (this.form.valid) {
+     alert("Se a agredo tu producto")
+    }
+    else{
+      alert("FILL ALL FIELDS")
+    }
   }
+
+
+  AltasProductos(nombre:any,descrip:string,consola:string,precio:string,img:number){
+    this.itemList.push({
+      consola:consola,
+      descrip:descrip,
+      img:img,
+      nombre:nombre.value,
+      precio:"$" + precio
+    });
+    nombre.focus();
+    this.form.reset();
+
+  }
+  ngOnInit():void{
+  }
+
 }

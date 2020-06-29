@@ -33,56 +33,46 @@
           <mat-card-content class="dashboard-card-content">
             <div>
 
-              <form [formGroup]="forma" (ngSubmit)="guardarCambios()">
+              <mat-card class="contact-card">
+                <mat-card-header>
+                  <mat-card-title>Reactive Form</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <form id="contactForm" [formGroup]="form" (ngSubmit)="submit()">
 
-                <div class="container">
-                  <div class="row mt-5">
-                    <div class="col-6">
-                      <h4>Formularios <small>data</small></h4>
-                      <hr>
-                      <div class="form-group row">
-                        <label class="col-2 col-form-label">Nombre</label>
-                        <div class="col-8">
+                    <table class="example-full-width" cellspacing="0"><tr>
+                      <td><mat-form-field class="example-full-width">
+                        <mat-label>Nombre del videojuego</mat-label>
+                        <input #nombre matInput placeholder="Nombre del videojuego" formControlName="nombre" class="form-control"  name="nombre">
+                      </mat-form-field></td>
+                      <td><mat-form-field class="example-full-width">
+                        <mat-label>Precio del juego</mat-label>
+                        <input #precio matInput placeholder="1234" formControlName="precio" class="form-control"  name="precio">
+                      </mat-form-field></td>
+                    </tr></table>
+                    <br>
 
-                          <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
+                    <table class="example-full-width" cellspacing="0"><tr>
+                      <td><mat-form-field class="example-full-width">
+                        <mat-label>¿A que consola pertenece?</mat-label>
+                        <input #consola matInput placeholder="Xbox360,Nintendo Switch,Playstation 4" formControlName="consola" class="form-control"  name="consola">
+                      </mat-form-field></td>
+                      <td><mat-form-field class="example-full-width">
+                        <mat-label>Poner url de la imagen</mat-label>
+                        <input #img matInput placeholder="Url de la imagen" formControlName="img" class="form-control"  name="img">
+                      </mat-form-field></td>
+                    </tr></table>
 
+                    <br>
+                    <mat-form-field class="example-full-width">
+                      <textarea #descripcion rows="4" cols="50" matInput placeholder="Descripción para videojuego..." formControlName="descripcion" class="form-control"  name="descripcion"></textarea>
+                    </mat-form-field>
+                    <br>
 
-                        </div>
-                      </div>
-
-                      <div class="form-group row">
-                        <label class="col-2 col-form-label">Apellido</label>
-                        <div class="col-8">
-
-                          <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido">
-                        </div>
-                      </div>
-
-                      <div class="form-group row">
-                        <label class="col-2 col-form-label">Correo</label>
-                        <div class="col-8">
-
-                          <input class="form-control" type="text" placeholder="Correo electronico"
-                            formControlName="correo">
-
-
-                        </div>
-                      </div>
-
-                      <div class="form-group row">
-                        <label class="col-2 col-form-label">&nbsp;</label>
-                        <div class="input-group col-md-8">
-                          <button type="submit" class="btn btn-outline-primary">
-                            Guardar
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {{forma.valid}}
-                </div>
-              </form>
-
+                    <button id="btnSubmit" mat-raised-button type="submit" (click)="AltasProductos(nombre,descripcion.value,consola.value,precio.value,img.value)" [disabled]="!form.valid" color="primary">Dar de alta</button>
+                    </form>
+                </mat-card-content>
+              </mat-card>
 
             </div>
           </mat-card-content>
@@ -101,7 +91,7 @@
   <div class="container">
    <div class="row mt-5">
      <div class="col-6">
-      <h4>Formularios <small>data</small></h4>
+      <h4>Formalarios <small>data</small></h4>
       <hr>
     <div class="form-group row">
       <label class="col-2 col-form-label">Nombre</label>

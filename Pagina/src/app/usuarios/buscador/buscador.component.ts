@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { JuegoService, Juego } from './../shared/juego.service';
 import { ActivatedRoute } from '@angular/router';
 
+
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-buscador',
   templateUrl: './buscador.component.html',
@@ -12,16 +15,21 @@ export class BuscadorComponent implements OnInit {
   indice: number;
   mijuego: Juego;
 
-  constructor( private juegoService: JuegoService, private activatedRoute: ActivatedRoute ) {
+
+
+  constructor( private juegoService: JuegoService, private activatedRoute: ActivatedRoute) {
+
+
+
     this.activatedRoute.params.subscribe( params => {
       this.nombrej = params['nombrej'];
-      this.indice = this.juegoService.buscarJuego( this.nombrej );
-      console.log(this.indice);
+      this.indice =  this.juegoService.buscarJuego( this.nombrej );
       if ( this.indice != -1 ){
         this.mijuego = this.juegoService.getJuego( this.indice );
       }
     });
    }
+
 
   ngOnInit(): void {
   }

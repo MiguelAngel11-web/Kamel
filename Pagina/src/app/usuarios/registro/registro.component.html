@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <body>
 
   <div id="clouds">
@@ -13,35 +15,43 @@
 
     <div id="login">
 
-      <form method="post">
+      <form [formGroup]="forma" (ngSubmit)="onSubmit()">
 
         <fieldset class="clearfix">
 
-          <p><span class="fontawesome-user"></span><input type="text" value="Usuario"
-              onBlur="if(this.value == '') this.value = 'Usuario'" onFocus="if(this.value == 'Usuario') this.value = ''"
-              required></p>
+          <p><span class="fontawesome-user form-control"></span><input #user type="text" value="Digite usuario..." placeholder="Digite usuario..."
+              onBlur="if(this.value == '') this.value = 'Digite usuario...'" onFocus="if(this.value == 'Digite usuario...') this.value = ''"
+              formControlName="username"
+              required
+              ></p>
           <!-- JS because of IE support; better: placeholder="Username" -->
-          <p><span class="fontawesome-envelope"></span><input type="email" value="Email"
-              onBlur="if(this.value == '') this.value = 'Email'" onFocus="if(this.value == 'Email') this.value = ''"
+          <p><span class="fontawesome-envelope form-control"></span><input #email type="email" value="example@gmail.com" placeholder="example@gmail.com"
+              onBlur="if(this.value == '') this.value = 'example@gmail.com'" onFocus="if(this.value == 'example@gmail.com') this.value = ''"
+              formControlName="email"
               required></p>
           <!-- JS because of IE support; better: placeholder="Email" -->
-          <p><span class="fontawesome-lock"></span><input type="password" value="Password"
+          <p><span class="fontawesome-lock form-control"></span><input #pass type="password" value="Password"  placeholder="Password"
               onBlur="if(this.value == '') this.value = 'Password'"
-              onFocus="if(this.value == 'Password') this.value = ''" required></p>
+              onFocus="if(this.value == 'Password') this.value = ''"
+              formControlName="password"
+              required></p>
           <!-- JS because of IE support; better: placeholder="Password" -->
-          <p><span class="fontawesome-lock"></span><input type="password" value="Password"
+          <p><span class="fontawesome-lock form-control"></span><input type="password" value="Password" placeholder="Re-confrim password"
               onBlur="if(this.value == '') this.value = 'Password'"
-              onFocus="if(this.value == 'Password') this.value = ''" required></p>
+              onFocus="if(this.value == 'Password') this.value = ''"
+              formControlName="confirmPassword"
+              required></p>
           <!-- JS because of IE support; better: placeholder="Password" -->
-          <p><input type="submit" value="Sign In"></p>
+          <p><input type="submit" (click)="RegistroNuevo(user.value,email.value,pass.value)" [disabled]="forma.invalid" value="Registrarse"></p>
 
         </fieldset>
 
       </form>
 
-      <p>
+      <p >
         ¿Ya tienes una cuenta? <br> Inicia sesión.
-        <a  class="blue" type="button" data-toggle="modal"
+
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/login']" class="blue" type="submit" data-toggle="modal"
           data-target="#exampleModal">Login</a>
         <span class="fontawesome-arrow-right"></span>
       </p>
@@ -51,4 +61,4 @@
 
 </body>
 
-
+<app-footer></app-footer>

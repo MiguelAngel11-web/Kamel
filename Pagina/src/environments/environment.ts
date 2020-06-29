@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig : {
+    apiKey: "AIzaSyACuw8o9wJT_yX1sMlAhqJbQYqwG5JBNnI",
+    authDomain: "kamel-6e19d.firebaseapp.com",
+    databaseURL: "https://kamel-6e19d.firebaseio.com",
+    projectId: "kamel-6e19d",
+    storageBucket: "kamel-6e19d.appspot.com",
+    messagingSenderId: "687303594591",
+    appId: "1:687303594591:web:bc30fd188a8cf29d66c1ea",
+    measurementId: "G-F24KR2WGM1"
+  }
 };
 
 /*

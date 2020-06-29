@@ -9,6 +9,7 @@ import { JuegosComponent } from './usuarios/juegos/juegos.component';
 import { AboutComponent } from './usuarios/about/about.component';
 import { QuestionComponent } from './usuarios/question/question.component';
 import { LoginComponent } from './usuarios/login/login.component';
+import { RegistroComponent } from './usuarios/registro/registro.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './usuarios/material/material.module';
@@ -31,6 +32,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 //Comando de voz
 import {SpeechSynthesisModule} from '@kamiazya/ngx-speech-synthesis';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -46,7 +51,8 @@ import {SpeechSynthesisModule} from '@kamiazya/ngx-speech-synthesis';
     FooterComponent,
     ContactComponent,
     PanelComponent,
-    DashboardComponent
+    DashboardComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +73,10 @@ import {SpeechSynthesisModule} from '@kamiazya/ngx-speech-synthesis';
       volume: 1.0,
       pitch: 1.0,
       rate: 1.0,
-    })
+    }),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule
   ],
   providers: [JuegoService],
   bootstrap: [AppComponent]
