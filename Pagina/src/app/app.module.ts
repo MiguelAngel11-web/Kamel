@@ -78,7 +78,7 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
       rate: 1.0,
     }),
     AngularFireModule.initializeApp(
-        {},{
+        {
         apiKey: "AIzaSyACuw8o9wJT_yX1sMlAhqJbQYqwG5JBNnI",
         authDomain: "kamel-6e19d.firebaseapp.com",
         databaseURL: "https://kamel-6e19d.firebaseio.com",
