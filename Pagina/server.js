@@ -6,7 +6,7 @@ const app = express();
 
 var admin = require("firebase-admin");
 
-var serviceAccount = require("path/to/serviceAccountKey.json");
+var serviceAccount = require("../kamel-6e19d-1000f97cc92e.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
