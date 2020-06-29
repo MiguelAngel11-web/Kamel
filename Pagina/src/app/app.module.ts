@@ -37,6 +37,8 @@ import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { CodigoQRComponent } from './usuarios/codigo-qr/codigo-qr.component';
 
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +56,7 @@ import { CodigoQRComponent } from './usuarios/codigo-qr/codigo-qr.component';
     DashboardComponent,
     RegistroComponent,
     CodigoQRComponent,
+    NgxQRCodeModule
   ],
   imports: [
     BrowserModule,
