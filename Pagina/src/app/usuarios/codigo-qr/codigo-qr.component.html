@@ -1,1 +1,19 @@
-<p>codigo-qr works!</p>
+<div style="text-align:center">
+  <h1>
+    QR generado.
+  </h1>
+
+  <button (click)="generateQRCode()">Generar código QR</button>
+  <ngx-qrcode
+  *ngIf="display"
+  id="qrCodeImage"
+  [elementType]="elementType"
+  [value] = "value"
+  cssClass = "aclass"
+  errorCorrectionLevel = "H"
+  width="200"
+  colorLight
+  margin="4">
+  </ngx-qrcode>
+
+</div>
