@@ -35,7 +35,7 @@ import {SpeechSynthesisModule} from '@kamiazya/ngx-speech-synthesis';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { environment } from '../environments/environment';
+import { CodigoQRComponent } from './usuarios/codigo-qr/codigo-qr.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,8 @@ import { environment } from '../environments/environment';
     ContactComponent,
     PanelComponent,
     DashboardComponent,
-    RegistroComponent
+    RegistroComponent,
+    CodigoQRComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +75,7 @@ import { environment } from '../environments/environment';
       pitch: 1.0,
       rate: 1.0,
     }),
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule,
     AngularFireAnalyticsModule,
     AngularFirestoreModule
   ],
