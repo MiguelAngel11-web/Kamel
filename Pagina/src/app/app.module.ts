@@ -78,7 +78,12 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
       rate: 1.0,
     }),
     AngularFireModule.initializeApp(
+<<<<<<< HEAD
         { apiKey: "AIzaSyACuw8o9wJT_yX1sMlAhqJbQYqwG5JBNnI",
+=======
+        {
+        apiKey: "AIzaSyACuw8o9wJT_yX1sMlAhqJbQYqwG5JBNnI",
+>>>>>>> 6d75d5206310aeabc304b694080e482de28ea36c
         authDomain: "kamel-6e19d.firebaseapp.com",
         databaseURL: "https://kamel-6e19d.firebaseio.com",
         projectId: "kamel-6e19d",
