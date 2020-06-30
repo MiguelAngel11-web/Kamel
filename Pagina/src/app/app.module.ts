@@ -10,6 +10,7 @@ import { AboutComponent } from './usuarios/about/about.component';
 import { QuestionComponent } from './usuarios/question/question.component';
 import { LoginComponent } from './usuarios/login/login.component';
 import { RegistroComponent } from './usuarios/registro/registro.component';
+import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './usuarios/material/material.module';
@@ -38,6 +39,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { CodigoQRComponent } from './usuarios/codigo-qr/codigo-qr.component';
 
 import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { GraficaComponent } from './admin/grafica/grafica.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +59,9 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     PanelComponent,
     DashboardComponent,
     RegistroComponent,
-    CodigoQRComponent
+    CodigoQRComponent,
+    LoginAdminComponent,
+    GraficaComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +96,8 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     ),
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    HttpClientModule,
   ],
   providers: [JuegoService],
   bootstrap: [AppComponent]

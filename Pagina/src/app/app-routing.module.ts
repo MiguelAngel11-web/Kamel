@@ -10,15 +10,17 @@ import { LoginComponent } from './usuarios/login/login.component';
 import { RegistroComponent } from './usuarios/registro/registro.component';
 import { JuegoComponent } from './usuarios/juego/juego.component';
 import { BuscadorComponent } from './usuarios/buscador/buscador.component';
-import { PanelComponent } from './admin/panel/panel.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
+import { GraficaComponent } from './admin/grafica/grafica.component';
 
 
 
 const routes: Routes = [
   //Administrador
-  { path: 'admin',component:PanelComponent},
+  { path: 'admin',component:LoginAdminComponent},
   { path: 'dash',component:DashboardComponent},
+  { path: 'grafica',component:GraficaComponent},
   //Usuario
   { path: 'home', component: HomeComponent },
   { path: 'juegos', component: JuegosComponent },
