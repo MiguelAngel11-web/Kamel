@@ -18,9 +18,6 @@ export class BuscadorComponent implements OnInit {
 
 
   constructor( private juegoService: JuegoService, private activatedRoute: ActivatedRoute) {
-
-
-
     this.activatedRoute.params.subscribe( params => {
       this.nombrej = params['nombrej'];
       this.indice =  this.juegoService.buscarJuego( this.nombrej );

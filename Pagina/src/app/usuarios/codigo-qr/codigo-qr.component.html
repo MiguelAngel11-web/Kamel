@@ -1,9 +1,5 @@
 <div style="text-align:center">
-  <h1>
-    QR generado.
-  </h1>
-
-  <button (click)="generateQRCode()">Generar código QR</button>
+  <button (click)="generateQRCode()" class="btn btn-material">Generar código QR</button>
   <ngx-qrcode
   *ngIf="display"
   id="qrCodeImage"

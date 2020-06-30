@@ -41,6 +41,10 @@ export class JuegoService{
     let index = this.juegos.findIndex( p => p.nombre === nombrej )
     return index;
   }
+
+  obtenerJuegos(){
+    return this.juegos;
+  }
 }
 
 export interface Juego{

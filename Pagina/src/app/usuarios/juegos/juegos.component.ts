@@ -19,9 +19,21 @@ export class JuegosComponent implements OnInit {
   itemList: AngularFireList<any>;
   items: Observable<any>;
 
+  elementType :'url' | 'canvas' | 'img' = 'url'; //Podemos colocar img, canvas o un url
+  value: string;
+  display = false;
+
+
   constructor(public juegoServise: JuegoService, public router: Router,private db: AngularFireDatabase) {
     this.itemList = db.list('games');
     this.items = db.list('games').valueChanges();
+  }
+
+
+  generateQRCode(precio:string){
+    console.log(precio);
+    this.value = precio;
+    this.display = true;
   }
 
 
@@ -30,6 +42,7 @@ export class JuegosComponent implements OnInit {
       this.misjuegos=res
       this.juegoServise.getJuegos(this.misjuegos)
     })
+    console.log(this.misjuegos);
   }
 
 }
