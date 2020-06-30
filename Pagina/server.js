@@ -10,4 +10,8 @@ app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname + "/dist/pagina/index.html"));
 });
 
+app.get("/admin",(res,req)=>{
+  
+})
+
 app.listen(process.env.PORT || 8080);
