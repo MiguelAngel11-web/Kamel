@@ -10,25 +10,25 @@
       <div class="col-md-6 form-line">
           <div class="form-group">
             <label for="exampleInputUsername">Nombre completo</label>
-            <input type="text" class="form-control" name="name" placeholder=" Nombre">
+            <input #name type="text" class="form-control" name="name" placeholder=" Nombre">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail">Correo Electronico</label>
-            <input type="email" class="form-control" name="email" id="exampleInputEmail" placeholder="Email">
+            <input #email type="email" class="form-control" name="email" id="exampleInputEmail" placeholder="Email">
           </div>
           <div class="form-group">
             <label for="telephone">Numero de telefono</label>
-            <input type="tel" class="form-control" name="phone" id="telephone" placeholder="Núm. Telefono">
+            <input #phone type="tel" class="form-control" name="phone" id="telephone" placeholder="Núm. Telefono">
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for ="description">Mensaje</label>
-             <textarea  class="form-control" id="description" name="message" placeholder="Mensaje..."></textarea>
+             <textarea #msj class="form-control" id="description" name="message" placeholder="Mensaje..."></textarea>
           </div>
           <div>
 
-            <button type="button" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i> Enviar</button>
+            <button type="button" class="btn btn-default submit" (click)="MandarCorreo(name.value,email.value,phone.value,msj.value)"><i class="fa fa-paper-plane" aria-hidden="true"></i> Enviar</button>
           </div>
 
       </div>

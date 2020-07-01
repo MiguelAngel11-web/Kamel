@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-
+import { ApiService } from './../../service/api.service';
 /**
  * @title Stepper with optional steps
  */
@@ -17,7 +17,22 @@ export class ContactComponent implements OnInit {
   secondFormGroup: FormGroup;
   isOptional = false;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder,private apisService: ApiService) {}
+
+  MandarCorreo(name: string, email: string, phone: string, msj: string){
+    let body = {
+      name: name,
+      email: email,
+      phone: phone,
+      msj: msj
+    }
+
+    this.apisService.alta2('https://api-kamel.herokuapp.com/send-mail', body)
+      .then((data) => { console.log(data) })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
