@@ -42,9 +42,9 @@
                     <!-- JS because of IE support; better: placeholder="Password"
                      <button id="btn-login" class="btn btn-success" (click)="entrar(user.value, pass.value)">Entrar  </button>
                     -->
-                    <a id="btn-fblogin" class="btn btn-danger"  (click)="EntrarconGoogle()"><i class="fab fa-google-plus-g"></i>Entrar con Google</a>
-                    <a type="button" class="btn btn-primary" (click)="EntrarconFacebook()"><i class="fab fa-facebook"></i> Entrar con Facebook</a>
-                    <p><input type="submit" (click)="entrar(user.value, pass.value)" value="Sign In"></p>
+                    <a id="btn-fblogin" class="btn btn-danger btn-lg  btn-block" (click)="EntrarconGoogle()"><i class="fab fa-google-plus-g"></i>Entrar con Google</a>
+                    <a type="button" class="btn btn-primary btn-lg  btn-block" (click)="EntrarconFacebook()"><i class="fab fa-facebook"></i> Entrar con Facebook</a>
+                    <p><input class="botones" type="submit" (click)="entrar(user.value, pass.value)" value="Sign In"></p>
 
                   </fieldset>
                 </form>
