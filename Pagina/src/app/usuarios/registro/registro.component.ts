@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import {
   FormGroup,
   FormControl,
-  Validators,
-  ValidatorFn,
-  AbstractControl,
+  Validators
 } from '@angular/forms';
 
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { CustomValidators } from './validator';
+
+import { ApiService } from '../../service/api.service';
 
 @Component({
   selector: 'app-registro',
@@ -19,10 +17,9 @@ import { CustomValidators } from './validator';
 export class RegistroComponent implements OnInit {
   forma: FormGroup;
   fb: FormControl;
-  itemList: AngularFireList<any>;
 
-  constructor(private db: AngularFireDatabase) {
-    this.itemList = db.list('usuario');
+  constructor(private api:ApiService) {
+
 
     this.forma = new FormGroup({
       username: new FormControl('', [
@@ -51,11 +48,13 @@ export class RegistroComponent implements OnInit {
   ngOnInit(): void {}
 
   RegistroNuevo(usuario: string, email: string, password: string) {
-    console.log(usuario);
-    this.itemList.push({
+    let body = {
+      user: usuario,
       email: email,
-      usuario: usuario,
-      password: password,
-    });
+      pass: password
+    };
+    this.api.alta(`https://kinder-mountie-14642.herokuapp.com/registro`,body)
+    .then((data)=>{console.log(data)})
+    .catch((err)=>{console.log(err)})
   }
 }

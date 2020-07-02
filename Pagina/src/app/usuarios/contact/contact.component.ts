@@ -27,11 +27,11 @@ export class ContactComponent implements OnInit {
       msj: msj
     }
 
-    this.apisService.alta2('https://api-kamel.herokuapp.com/send-mail', body)
+    /*this.apisService.alta2('https://api-kamel.herokuapp.com/send-mail', body)
       .then((data) => { console.log(data) })
       .catch((err) => {
         console.log(err)
-      })
+      })*/
   }
 
   ngOnInit() {

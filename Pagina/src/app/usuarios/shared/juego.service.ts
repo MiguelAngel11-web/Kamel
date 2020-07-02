@@ -4,7 +4,7 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { ApiService } from './../../service/api.service';
 
 
 @Injectable({
@@ -21,7 +21,7 @@ export class JuegoService{
   itemList: AngularFireList<any>;
   items: Observable<any>;
 
-  constructor( private db: AngularFireDatabase,public angularAuth: AngularFireAuth) {
+  constructor( private db: AngularFireDatabase,public angularAuth: AngularFireAuth, public api: ApiService) {
 
     this.itemList = db.list('games');
     this.items = db.list('games').valueChanges();
@@ -30,6 +30,8 @@ export class JuegoService{
 
   getJuegos(juego:Juego[]): Juego[]{
     this.juegos=juego;
+    this.api.getJuegos(`https://kinder-mountie-14642.herokuapp.com/games`).subscribe((data:any) =>
+    {console.log(data)});
     return this.juegos;
   }
 
@@ -44,6 +46,8 @@ export class JuegoService{
 
   obtenerJuegos(){
     return this.juegos;
+  }
+  getApiJuegos(){
   }
 }
 
