@@ -26,5 +26,8 @@ export class ApiService {
   async login(url:string){
     return await this.httpClient.get(url).toPromise().catch((err)=> err);
   }
+  async LogOut(url:string){
+    return await this.httpClient.get(url);
+  }
 
 }

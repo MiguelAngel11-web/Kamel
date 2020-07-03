@@ -21,6 +21,10 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  Salir(){
+    this.api.LogOut(`https://kinder-mountie-14642.herokuapp.com/salir`);
+  }
+
   buscarJuego( nombrej:string ){
     this.router.navigate(['/buscador', nombrej ]);
   }
