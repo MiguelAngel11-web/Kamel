@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +12,19 @@ export class ApiService {
     return this.httpClient.post(url, body).toPromise().catch((err)=>{err});
   }
 
-  iniciarSesion(url:string){
-    return this.httpClient.get(url);
+  async iniciarSesion(url:string){
+     return await this.httpClient.get(url);
   }
 
-  getJuegos(url:string){
-    return this.httpClient.get(url);
+  async getUser(url:string){
+    return await this.httpClient.get(url).pipe(first()).toPromise();
+  }
 
+  async EmailAndPassword(url:string){
+    return await this.httpClient.get(url).toPromise().catch((err)=>{err});
+  }
+  async login(url:string){
+    return await this.httpClient.get(url).toPromise().catch((err)=> err);
   }
 
 }

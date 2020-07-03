@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from './../../service/api.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,10 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor(private router: Router ) { }
+  public isLogin = false;
+  public user:any;
+  constructor(private router: Router, private api: ApiService ) { }
 
   ngOnInit(): void {
+    console.log("NavBar");
+    this.user = this.api.getUser(`https://kinder-mountie-14642.herokuapp.com/getUser`);
+    if(this.user){
+      this.isLogin = true;
+      console.log("User-->",this.user);
+    }
   }
 
   buscarJuego( nombrej:string ){

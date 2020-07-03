@@ -47,12 +47,15 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  RegistroNuevo(usuario: string, email: string, password: string) {
+  RegistroNuevo() {
+    const {username,email,password} = this.forma.value;
     let body = {
-      user: usuario,
+      user: username,
       email: email,
       pass: password
     };
+    this.api.EmailAndPassword(`https://kinder-mountie-14642.herokuapp.com/crear/${email}/${password}`)
+
     this.api.alta(`https://kinder-mountie-14642.herokuapp.com/registro`,body)
     .then((data)=>{console.log(data)})
     .catch((err)=>{console.log(err)})

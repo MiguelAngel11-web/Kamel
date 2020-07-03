@@ -30,8 +30,6 @@ export class JuegoService{
 
   getJuegos(juego:Juego[]): Juego[]{
     this.juegos=juego;
-    this.api.getJuegos(`https://kinder-mountie-14642.herokuapp.com/games`).subscribe((data:any) =>
-    {console.log(data)});
     return this.juegos;
   }
 

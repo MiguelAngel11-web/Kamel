@@ -42,7 +42,7 @@
               formControlName="confirmPassword"
               required></p>
           <!-- JS because of IE support; better: placeholder="Password" -->
-          <p><input type="submit" (click)="RegistroNuevo(user.value,email.value,pass.value)" [disabled]="forma.invalid" value="Registrarse"></p>
+          <p><input type="submit" (click)="RegistroNuevo()" [disabled]="forma.invalid" value="Registrarse"></p>
 
         </fieldset>
 
