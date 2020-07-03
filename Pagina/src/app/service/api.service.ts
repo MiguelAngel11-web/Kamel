@@ -6,7 +6,8 @@ import { first } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
-  constructor(private httpClient: HttpClient) { }
+
+  constructor(private httpClient: HttpClient ) { }
 
   alta(url:string,body:any) {
     return this.httpClient.post(url, body).toPromise().catch((err)=>{err});
@@ -27,4 +28,8 @@ export class ApiService {
     return await this.httpClient.get(url).toPromise().catch((err)=> err);
   }
 
+}
+
+export interface Usuario{
+  user: string;
 }

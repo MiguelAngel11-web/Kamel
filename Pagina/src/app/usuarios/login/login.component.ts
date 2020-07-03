@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { auth } from 'firebase/app';
 
-import { ApiService } from '../../service/api.service';
+import { ApiService, Usuario } from '../../service/api.service';
 
 
 @Component({
@@ -13,6 +13,7 @@ import { ApiService } from '../../service/api.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  @Input() usuario: Usuario;
   /*-------------Declaracion de variables---------------*/
   isLinear = false;
   firstFormGroup: FormGroup;

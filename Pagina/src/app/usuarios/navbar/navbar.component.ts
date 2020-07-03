@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ApiService, Usuario } from './../../service/api.service';
 import { Router } from '@angular/router';
-import { ApiService } from './../../service/api.service';
 
 @Component({
   selector: 'app-navbar',
@@ -17,7 +17,6 @@ export class NavbarComponent implements OnInit {
     this.user = this.api.getUser(`https://kinder-mountie-14642.herokuapp.com/getUser`);
     if(this.user){
       this.isLogin = true;
-      console.log("User-->",this.user);
     }
   }
 

@@ -43,6 +43,7 @@ export class RegistroComponent implements OnInit {
     const password = this.forma.get('password').value as string;
     // Tú lógica de negocio...
     console.log(password);
+    console.log('Form--> ',this.forma.value);
   }
 
   ngOnInit(): void {}

@@ -19,28 +19,40 @@
 
         <fieldset class="clearfix">
 
-          <p><span class="fontawesome-user form-control"></span><input #user type="text" value="Digite usuario..." placeholder="Digite usuario..."
+          <p>
+            <span class="fontawesome-user form-control"></span>
+            <input #user type="text" value="Digite usuario..." placeholder="Digite usuario..."
               onBlur="if(this.value == '') this.value = 'Digite usuario...'" onFocus="if(this.value == 'Digite usuario...') this.value = ''"
               formControlName="username"
               required
-              ></p>
+              >
+            </p>
           <!-- JS because of IE support; better: placeholder="Username" -->
-          <p><span class="fontawesome-envelope form-control"></span><input #email type="email" value="example@gmail.com" placeholder="example@gmail.com"
+          <p>
+            <span class="fontawesome-envelope form-control"></span>
+            <input #email type="email" value="example@gmail.com" placeholder="example@gmail.com"
               onBlur="if(this.value == '') this.value = 'example@gmail.com'" onFocus="if(this.value == 'example@gmail.com') this.value = ''"
               formControlName="email"
-              required></p>
+              required>
+            </p>
           <!-- JS because of IE support; better: placeholder="Email" -->
-          <p><span class="fontawesome-lock form-control"></span><input #pass type="password" value="Password"  placeholder="Password"
+          <p>
+            <span class="fontawesome-lock form-control"></span>
+            <input #pass type="password" value="Password"  placeholder="Password"
               onBlur="if(this.value == '') this.value = 'Password'"
               onFocus="if(this.value == 'Password') this.value = ''"
               formControlName="password"
-              required></p>
+              required>
+            </p>
           <!-- JS because of IE support; better: placeholder="Password" -->
-          <p><span class="fontawesome-lock form-control"></span><input type="password" value="Password" placeholder="Re-confrim password"
+          <p>
+            <span class="fontawesome-lock form-control"></span>
+            <input type="password" value="Password" placeholder="Re-confrim password"
               onBlur="if(this.value == '') this.value = 'Password'"
               onFocus="if(this.value == 'Password') this.value = ''"
               formControlName="confirmPassword"
-              required></p>
+              required>
+            </p>
           <!-- JS because of IE support; better: placeholder="Password" -->
           <p><input type="submit" (click)="RegistroNuevo()" [disabled]="forma.invalid" value="Registrarse"></p>
 
