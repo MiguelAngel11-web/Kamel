@@ -18,7 +18,7 @@ export class ApiService {
   }
 
   async getUser(url:string){
-    return await this.httpClient.get(url).pipe(first()).toPromise();
+    return await this.httpClient.get(url).toPromise().catch((err)=>{err});
   }
 
   async EmailAndPassword(url:string){

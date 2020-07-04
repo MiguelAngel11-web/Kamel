@@ -11,6 +11,7 @@ import { QuestionComponent } from './usuarios/question/question.component';
 import { LoginComponent } from './usuarios/login/login.component';
 import { RegistroComponent } from './usuarios/registro/registro.component';
 import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
+import { InterfazUsuarioComponent } from './usuarios/interfaz-usuario/interfaz-usuario.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './usuarios/material/material.module';
@@ -61,7 +62,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegistroComponent,
     CodigoQRComponent,
     LoginAdminComponent,
-    GraficaComponent
+    GraficaComponent,
+    InterfazUsuarioComponent
   ],
   imports: [
     BrowserModule,
