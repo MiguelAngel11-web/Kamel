@@ -14,15 +14,22 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("NavBar");
-    this.user = this.api.getUser(`https://kinder-mountie-14642.herokuapp.com/getUser`);
-    if(this.user){
-      this.isLogin = true;
-      console.log("User-->",this.user);
-    }
+    this.api.getUser(`https://kinder-mountie-14642.herokuapp.com/getUser`)
+    .then((data)=>{
+      if(data){
+        this.user=data;
+        this.isLogin = true;
+        console.log("User-->",this.user);
+      }
+    });
+
   }
 
   Salir(){
-    this.api.LogOut(`https://kinder-mountie-14642.herokuapp.com/salir`);
+    this.isLogin=false
+    this.api.LogOut(`https://kinder-mountie-14642.herokuapp.com/salir`)
+    .then((resp)=>{console.log(resp)})
+    .catch((err)=>{console.log(err)});
   }
 
   buscarJuego( nombrej:string ){
