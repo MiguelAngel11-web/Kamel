@@ -1,8 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { auth } from 'firebase/app';
+
 import { ApiService } from '../../service/api.service';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,21 +22,25 @@ export class LoginComponent implements OnInit {
   /*----------------------------*/
 
   //Inicia contructor
-  constructor(private _formBuilder: FormBuilder, public api:ApiService, private router: Router) {}
+  constructor(private _formBuilder: FormBuilder, public api:ApiService) {}
   //Acaba contrsuctor
 
   /*----------------------------*/
-   entrar(user: string, pass: string) {
-    this.api.iniciarSesion(`https://kinder-mountie-14642.herokuapp.com/user/${user}`)
-    .then((data)=>{console.log(data)})
-    .catch((err)=>{console.log(err)})
-    if(user){
-      this.router.navigate(['/home']);
+   entrar(email: string, pass: string) {
+    /*this.api.iniciarSesion(`https://kinder-mountie-14642.herokuapp.com/email/${email}`)
+    .then((data)=>{console.log("Login-->",data)})
+    .catch((err)=>{console.log(err)})*/
 
-    }
+    this.api.login(`https://kinder-mountie-14642.herokuapp.com/signin/${email}/${pass}`).then((data:any)=>{
 
-    this.api.login(`https://kinder-mountie-14642.herokuapp.com/signin/${user}/${pass}`).catch((err)=>{console.log(err)});
-
+      console.log("NavBar");
+      this.api.getUser(`https://kinder-mountie-14642.herokuapp.com/getUser/${email}`).then((data:any)=>{
+        if(data){
+          console.log(data);
+          this.api.user=data;
+        }
+      });
+    });
   }
 
   /*----------------------------*/
@@ -43,14 +49,7 @@ export class LoginComponent implements OnInit {
   /*----------------------------*/
 
   /*----------------------------*/
-  async EntrarconGoogle() {
-    /*
-    try{
-      this.api.loginGoogle();
-    } catch (error){
-      console.log(error);
-    }
-    */
+  EntrarconGoogle() {
   }
   /*----------------------------*/
 

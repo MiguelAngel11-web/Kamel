@@ -1,7 +1,27 @@
-
 .fondoUser{
   background-image: url(../../../assets/img/universo11.jpg);
   background-repeat: no-repeat;
+}
+
+.jumbotron{
+  position: relative;
+  z-index: 5;
+  height: 250px;
+  width: 300px;
+  color: #FFF;
+  font-size: 400%;
+  padding: 20px;
+}
+.jumbotron::before{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url(../../../assets/img/fondoTabla1.jpg) center center;
+  opacity: .7;
 }
 
 .row{
@@ -11,16 +31,15 @@
 }
 
 .informacion{
-  background-image: url(../../../assets/img/fondoTabla1.jpg);
-  background-repeat: no-repeat;
-  opacity: 50%;
   color: aliceblue;
+  align-content: center;
 }
 
 table{
   background-color: blanchedalmond;
-  opacity: 85%;
-  width: 50%;
+  opacity: 90%;
+  width: 25%;
+
   margin: 15px;
   text-align: center;
 }
@@ -31,4 +50,8 @@ th{
 
 td{
   color: #709fb0;
+}
+
+img{
+  opacity: 100%;
 }
