@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { auth } from 'firebase/app';
+import { Router } from '@angular/router';
 
 import { ApiService } from '../../service/api.service';
 
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   /*----------------------------*/
 
   //Inicia contructor
-  constructor(private _formBuilder: FormBuilder, public api:ApiService) {}
+  constructor(private _formBuilder: FormBuilder, public api:ApiService,private router: Router) {}
   //Acaba contrsuctor
 
   /*----------------------------*/
@@ -30,17 +30,18 @@ export class LoginComponent implements OnInit {
     /*this.api.iniciarSesion(`https://kinder-mountie-14642.herokuapp.com/email/${email}`)
     .then((data)=>{console.log("Login-->",data)})
     .catch((err)=>{console.log(err)})*/
-
-    this.api.login(`https://kinder-mountie-14642.herokuapp.com/signin/${email}/${pass}`).then((data:any)=>{
-
+    this.api.login(`https://kinder-mountie-14642.herokuapp.com/signin/${email}/${pass}`)
+    .then((data:any)=>{
+      console.log(data)
       console.log("NavBar");
-      this.api.getUser(`https://kinder-mountie-14642.herokuapp.com/getUser/${email}`).then((data:any)=>{
-        if(data){
-          console.log(data);
-          this.api.user=data;
-        }
-      });
+    this.api.getUser(`https://kinder-mountie-14642.herokuapp.com/getUser/${email}`).then((data:any)=>{
+      if(data){
+        console.log(data);
+        this.api.user=data;
+      }
     });
+    });
+
   }
 
   /*----------------------------*/

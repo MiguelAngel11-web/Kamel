@@ -14,12 +14,14 @@ export class ApiService {
     return this.httpClient.post(url, body).toPromise().catch((err)=>{err});
   }
 
+
+
   async iniciarSesion(url:string){
      return await this.httpClient.get(url);
   }
 
   async getUser(url:string){
-    return await this.httpClient.get(url).toPromise().catch((err)=>err);
+    return await this.httpClient.get(url).toPromise().catch((err)=>{console.log(err)});
   }
 
   async EmailAndPassword(url:string){
@@ -30,7 +32,7 @@ export class ApiService {
     return await this.httpClient.get(url).toPromise().catch((err)=> err);
   }
   async LogOut(url:string){
-    return await this.httpClient.get(url).toPromise().catch((err)=>{err});
+    return await this.httpClient.get(url).toPromise();
   }
 
   async EnviarCorreo(url:string,body:any){
