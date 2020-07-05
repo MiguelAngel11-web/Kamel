@@ -14,6 +14,7 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
 import { InterfazUsuarioComponent } from './usuarios/interfaz-usuario/interfaz-usuario.component';
 import { GraficaComponent } from './admin/grafica/grafica.component';
+import { NavbarComponent } from './usuarios/navbar/navbar.component';
 
 
 
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'grafica',component:GraficaComponent},
   //Usuario
   { path: 'home', component: HomeComponent },
+  { path: 'navbar/:email', component: NavbarComponent },
   { path: 'juegos', component: JuegosComponent },
   { path: 'juego/:id', component: JuegoComponent },
   { path: 'about', component: AboutComponent },
