@@ -1,11 +1,56 @@
 <app-navbar></app-navbar>
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-      One of three columns
+<div class="fondoUser">
+
+    <div class="row">
+      <div class="col-4">
+        <div class="list-group" id="list-tab" role="tablist">
+          <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+          <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Perfil</a>
+          <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Configuración</a>
+        </div>
+      </div>
+      <div class="col-8 informacion">
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active letras" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+            OOOOOOOOHH owo
+          </div>
+          <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <img src="../../../assets/img/16.jpg" alt="" height="150px">
+                  </th>
+                  <th scope="col">JAQUELINE BARRERA</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row" rowspan="2">ID personal</th>
+                  <td>al174372</td>
+                </tr>
+                <tr>
+                  <td>http://localhost:4200/interfazUser</td>
+                </tr>
+                <tr>
+                  <th scope="row">Correo electrónico <br> para inicio de sesión</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+          <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+            Yo muy very good :o
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-sm">
-      One of three columns
-    </div>
-  </div>
+
+
 </div>
+
+<app-footer></app-footer>>

@@ -8,6 +8,7 @@ import {
 import { CustomValidators } from './validator';
 
 import { ApiService } from '../../service/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -18,7 +19,7 @@ export class RegistroComponent implements OnInit {
   forma: FormGroup;
   fb: FormControl;
 
-  constructor(private api:ApiService) {
+  constructor(private api:ApiService, private router: Router) {
 
 
     this.forma = new FormGroup({
@@ -60,5 +61,8 @@ export class RegistroComponent implements OnInit {
     this.api.alta(`https://kinder-mountie-14642.herokuapp.com/registro`,body)
     .then((data)=>{console.log(data)})
     .catch((err)=>{console.log(err)})
+    if(this.forma.value){
+      this.router.navigate(['/home']);
+    }
   }
 }

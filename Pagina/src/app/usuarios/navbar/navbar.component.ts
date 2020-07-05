@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ApiService, Usuario } from './../../service/api.service';
+import { ApiService } from './../../service/api.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -25,6 +25,7 @@ export class NavbarComponent implements OnInit {
   Salir(){
     this.isLogin = false;
     this.api.LogOut(`https://kinder-mountie-14642.herokuapp.com/salir`);
+    this.router.navigate(['/login']);
   }
 
 

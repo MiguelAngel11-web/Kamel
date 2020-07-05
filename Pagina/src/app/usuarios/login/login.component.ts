@@ -1,10 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import { auth } from 'firebase/app';
-
-import { ApiService, Usuario } from '../../service/api.service';
+import { ApiService } from '../../service/api.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +11,6 @@ import { ApiService, Usuario } from '../../service/api.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  @Input() usuario: Usuario;
   /*-------------Declaracion de variables---------------*/
   isLinear = false;
   firstFormGroup: FormGroup;
@@ -23,7 +20,7 @@ export class LoginComponent implements OnInit {
   /*----------------------------*/
 
   //Inicia contructor
-  constructor(private _formBuilder: FormBuilder, public api:ApiService) {}
+  constructor(private _formBuilder: FormBuilder, public api:ApiService, private router: Router) {}
   //Acaba contrsuctor
 
   /*----------------------------*/
@@ -31,6 +28,10 @@ export class LoginComponent implements OnInit {
     this.api.iniciarSesion(`https://kinder-mountie-14642.herokuapp.com/user/${user}`)
     .then((data)=>{console.log(data)})
     .catch((err)=>{console.log(err)})
+    if(user){
+      this.router.navigate(['/home']);
+
+    }
 
     this.api.login(`https://kinder-mountie-14642.herokuapp.com/signin/${user}/${pass}`).catch((err)=>{console.log(err)});
 
@@ -42,7 +43,14 @@ export class LoginComponent implements OnInit {
   /*----------------------------*/
 
   /*----------------------------*/
-  EntrarconGoogle() {
+  async EntrarconGoogle() {
+    /*
+    try{
+      this.api.loginGoogle();
+    } catch (error){
+      console.log(error);
+    }
+    */
   }
   /*----------------------------*/
 

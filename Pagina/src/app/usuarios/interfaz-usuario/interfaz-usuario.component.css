@@ -1,0 +1,34 @@
+
+.fondoUser{
+  background-image: url(../../../assets/img/universo11.jpg);
+  background-repeat: no-repeat;
+}
+
+.row{
+  margin-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.informacion{
+  background-image: url(../../../assets/img/fondoTabla1.jpg);
+  background-repeat: no-repeat;
+  opacity: 50%;
+  color: aliceblue;
+}
+
+table{
+  background-color: blanchedalmond;
+  opacity: 85%;
+  width: 50%;
+  margin: 15px;
+  text-align: center;
+}
+
+th{
+  color: #726a95;
+}
+
+td{
+  color: #709fb0;
+}

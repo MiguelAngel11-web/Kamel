@@ -32,21 +32,29 @@
                 <form method="post">
                   <fieldset class="clearfix">
 
-                    <p><span class="fontawesome-user"></span><input #user type="text" value="Usuario"
+                    <p>
+                      <span class="fontawesome-user"></span>
+                      <input #user type="text" value="Usuario"
                         onBlur="if(this.value == '') this.value = 'Usuario'"
-                        onFocus="if(this.value == 'Usuario') this.value = ''" required></p>
+                        onFocus="if(this.value == 'Usuario') this.value = ''" required>
+                    </p>
                     <!-- JS because of IE support; better: placeholder="Username" -->
-                    <p><span class="fontawesome-lock"></span><input #pass type="password" value="Password"
+                    <p>
+                      <span class="fontawesome-lock"></span>
+                      <input #pass type="password" value="Password"
                         onBlur="if(this.value == '') this.value = 'Password'"
-                        onFocus="if(this.value == 'Password') this.value = ''" required></p>
+                        onFocus="if(this.value == 'Password') this.value = ''" required>
+                    </p>
                     <!-- JS because of IE support; better: placeholder="Password"
                      <button id="btn-login" class="btn btn-success" (click)="entrar(user.value, pass.value)">Entrar  </button>
                     -->
-                    <a id="btn-fblogin" class="btn btn-danger btn-lg  btn-block" (click)="EntrarconGoogle()"><i class="fab fa-google-plus-g"></i>Entrar con Google</a>
-                    <a type="button" class="btn btn-primary btn-lg  btn-block" (click)="EntrarconFacebook()"><i class="fab fa-facebook"></i> Entrar con Facebook</a>
+
                     <p>
                       <input class="botones" type="submit" (click)="entrar(user.value, pass.value)" value="Sign In">
                     </p>
+                    <a id="btn-fblogin" class="btn btn-danger btn-lg  btn-block" (click)="EntrarconGoogle()"><i class="fab fa-google-plus-g"></i>Entrar con Google</a>
+                    <a type="button" class="btn btn-primary btn-lg  btn-block" (click)="EntrarconFacebook()"><i class="fab fa-facebook"></i> Entrar con Facebook</a>
+
 
                   </fieldset>
                 </form>
