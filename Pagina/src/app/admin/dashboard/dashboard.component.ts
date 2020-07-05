@@ -1,10 +1,10 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { AngularFireAuth } from '@angular/fire/auth';
+
 
 @Component({
   selector: 'app-dashboard',

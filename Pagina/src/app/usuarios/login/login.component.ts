@@ -26,13 +26,21 @@ export class LoginComponent implements OnInit {
   //Acaba contrsuctor
 
   /*----------------------------*/
-   entrar(user: string, pass: string) {
-    this.api.iniciarSesion(`https://kinder-mountie-14642.herokuapp.com/user/${user}`)
-    .then((data)=>{console.log(data)})
-    .catch((err)=>{console.log(err)})
+   entrar(email: string, pass: string) {
+    /*this.api.iniciarSesion(`https://kinder-mountie-14642.herokuapp.com/email/${email}`)
+    .then((data)=>{console.log("Login-->",data)})
+    .catch((err)=>{console.log(err)})*/
 
-    this.api.login(`https://kinder-mountie-14642.herokuapp.com/signin/${user}/${pass}`).catch((err)=>{console.log(err)});
+    this.api.login(`https://kinder-mountie-14642.herokuapp.com/signin/${email}/${pass}`).then((data:any)=>{
 
+      console.log("NavBar");
+      this.api.getUser(`https://kinder-mountie-14642.herokuapp.com/getUser/${email}`).then((data:any)=>{
+        if(data){
+          console.log(data);
+          this.api.user=data;
+        }
+      });
+    });
   }
 
   /*----------------------------*/
