@@ -1,5 +1,6 @@
 table {
   width: 100%;
+  opacity: 0.5;
 }
 
 .jumbotron {
@@ -23,9 +24,6 @@ table {
   padding: 20px;
 }
 
-table{
-  opacity: 80%;
-}
 
 section {
   display: table;
