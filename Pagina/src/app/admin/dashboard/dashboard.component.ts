@@ -24,12 +24,14 @@ export class DashboardComponent implements OnInit {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Card 1', cols: 2, rows: 3 },
+          { title: 'Altas a productos', cols: 1, rows: 3 },
+          { title: 'Bajas a porductos', cols: 2, rows: 2 },
         ];
       }
 
       return [
-        { title: 'Card 1', cols: 2, rows: 3 }
+        { title: 'Altas a productos', cols: 2, rows: 2 },
+        { title: 'Bajas a porductos', cols: 2, rows: 2 },
       ];
     })
   );

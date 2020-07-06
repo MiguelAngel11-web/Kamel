@@ -14,19 +14,19 @@
     </mat-sidenav>
 
     <p><button mat-button (click)="sidenav.toggle()">Desplegar menu</button></p>
-    <h1 class="mat-h1">ALTA A PRODUCTOS</h1>
+    <h1 class="mat-h1">ALTA Y BAJAS A PRODUCTOS</h1>
     <mat-grid-list cols="2" rowHeight="350px">
       <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
         <mat-card class="dashboard-card">
           <mat-card-header>
             <mat-card-title>
-              Formulario para las altas
+              {{card.title}}
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
             <div>
 
-              <mat-card class="contact-card">
+              <mat-card *ngIf="card.title == 'Altas a productos'" class="contact-card">
                 <mat-card-header>
                   <mat-card-title>Datos del producto</mat-card-title>
                 </mat-card-header>
@@ -67,8 +67,57 @@
                 </mat-card-content>
               </mat-card>
 
+
+            </div>
+
+            <div>
+
+              <mat-card *ngIf="card.title == 'Bajas a porductos'" class="contact-card">
+                <mat-card-header>
+                  <mat-card-title>Datos del producto</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <form id="contactForm" [formGroup]="form" (ngSubmit)="submit()">
+
+                    <table class="example-full-width" cellspacing="0"><tr>
+                      <td><mat-form-field class="example-full-width">
+                        <mat-label>Nombre del videojuego</mat-label>
+                        <input #nombre matInput placeholder="Nombre del videojuego" formControlName="nombre" class="form-control"  name="nombre">
+                      </mat-form-field></td>
+                      <td><mat-form-field class="example-full-width">
+                        <mat-label>Precio del juego</mat-label>
+                        <input #precio matInput placeholder="1234" formControlName="precio" class="form-control"  name="precio">
+                      </mat-form-field></td>
+                    </tr></table>
+                    <br>
+
+                    <table class="example-full-width" cellspacing="0"><tr>
+                      <td><mat-form-field class="example-full-width">
+                        <mat-label>¿A que consola pertenece?</mat-label>
+                        <input #consola matInput placeholder="Xbox360,Nintendo Switch,Playstation 4" formControlName="consola" class="form-control"  name="consola">
+                      </mat-form-field></td>
+                      <td><mat-form-field class="example-full-width">
+                        <mat-label>Poner url de la imagen</mat-label>
+                        <input #img matInput placeholder="Url de la imagen" formControlName="img" class="form-control"  name="img">
+                      </mat-form-field></td>
+                    </tr></table>
+
+                    <br>
+                    <mat-form-field class="example-full-width">
+                      <textarea #descripcion rows="4" cols="50" matInput placeholder="Descripción para videojuego..." formControlName="descripcion" class="form-control"  name="descripcion"></textarea>
+                    </mat-form-field>
+                    <br>
+
+                    <button id="btnSubmit" mat-raised-button type="submit" (click)="AltasProductos(nombre,descripcion.value,consola.value,precio.value,img.value)" [disabled]="!form.valid" color="primary">Dar de alta</button>
+                    </form>
+                </mat-card-content>
+              </mat-card>
+
+
             </div>
           </mat-card-content>
+
+
         </mat-card>
       </mat-grid-tile>
     </mat-grid-list>
