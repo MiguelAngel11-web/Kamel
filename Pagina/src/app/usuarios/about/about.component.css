@@ -21,3 +21,30 @@ th{
   color: white;
 }
 
+
+.pause{
+  list-style:none;
+  position: absolute;
+  left:80%;
+  top: 20px;
+  color: #05dfd7;
+
+}
+
+.play{
+  list-style:none;
+  position: absolute;
+  left:90%;
+  top: 20px;
+  color: #05dfd7;
+
+}
+
+.play:hover{
+  color: #fff591;
+}
+
+.pause:hover{
+  color: #fff591;
+}
+

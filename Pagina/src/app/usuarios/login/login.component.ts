@@ -29,7 +29,10 @@ export class LoginComponent implements OnInit {
    entrar(email: string, pass: string) {
     /*this.api.iniciarSesion(`https://kinder-mountie-14642.herokuapp.com/email/${email}`)
     .then((data)=>{console.log("Login-->",data)})
-    .catch((err)=>{console.log(err)})*/
+    .catch((err)=>{console.log(err)})
+
+    `https://kinder-mountie-14642.herokuapp.com/user/${email}`*/
+
     this.api.login(`https://kinder-mountie-14642.herokuapp.com/signin/${email}/${pass}`)
     .then((data:any)=>{
       console.log(data)

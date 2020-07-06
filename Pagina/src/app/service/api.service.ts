@@ -14,14 +14,16 @@ export class ApiService {
     return this.httpClient.post(url, body).toPromise().catch((err)=>{err});
   }
 
-
+   CheckMail(url:string){
+    return  this.httpClient.get(url);
+  }
 
   async iniciarSesion(url:string){
      return await this.httpClient.get(url);
   }
 
   async getUser(url:string){
-    return await this.httpClient.get(url).toPromise().catch((err)=>{console.log(err)});
+    return await this.httpClient.get(url).toPromise();
   }
 
   async EmailAndPassword(url:string){
