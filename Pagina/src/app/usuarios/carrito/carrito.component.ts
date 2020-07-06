@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+
+import { ActivatedRoute } from '@angular/router';
 
 import { JuegoService, Juego } from './../shared/juego.service';
 
@@ -10,7 +12,20 @@ import { JuegoService, Juego } from './../shared/juego.service';
   templateUrl: './carrito.component.html',
   styleUrls: ['./carrito.component.css']
 })
+
+
+
 export class CarritoComponent implements OnInit {
+
+  @Input() juego:Juego;
+
+  constructor(private juegoService : JuegoService,public activatedRoute: ActivatedRoute){
+    this.activatedRoute.params.subscribe(params=>{
+      this.juego = this.juegoService.getJuego(params['id']);
+      console.log(this.juego);
+    })
+  }
+
   displayedColumns: string[] = ['cantidad', 'videojuego', 'precio', 'subtotal'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 

@@ -13,6 +13,7 @@ export class JuegoComponent implements OnInit {
   xbox: boolean = false;
   nin: boolean = false;
   play: boolean = false;
+  id:any;
 
 
 
@@ -20,6 +21,8 @@ export class JuegoComponent implements OnInit {
 
     this.activatedRoute.params.subscribe( params => {
                                                       this.juego = juegoService.getJuego( params['id'] );
+                                                      this.id = params['id'];
+                                                      console.log(this.id);
                                                       if(this.juego.consola == 'PlayStation 4'){
                                                           this.play=true;
                                                           this.xbox=false;
