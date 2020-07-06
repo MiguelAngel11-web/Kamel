@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -11,6 +12,7 @@ import { QuestionComponent } from './usuarios/question/question.component';
 import { LoginComponent } from './usuarios/login/login.component';
 import { RegistroComponent } from './usuarios/registro/registro.component';
 import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
+import { InterfazUsuarioComponent } from './usuarios/interfaz-usuario/interfaz-usuario.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './usuarios/material/material.module';
@@ -41,6 +43,7 @@ import { CodigoQRComponent } from './usuarios/codigo-qr/codigo-qr.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { GraficaComponent } from './admin/grafica/grafica.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CarritoComponent } from './usuarios/carrito/carrito.component';
 
 
 @NgModule({
@@ -61,7 +64,9 @@ import { HttpClientModule } from '@angular/common/http';
     RegistroComponent,
     CodigoQRComponent,
     LoginAdminComponent,
-    GraficaComponent
+    GraficaComponent,
+    InterfazUsuarioComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,

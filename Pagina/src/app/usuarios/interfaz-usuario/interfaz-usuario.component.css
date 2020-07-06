@@ -1,0 +1,60 @@
+* {
+  box-sizing:border-box;
+}
+
+.fondoUser{
+  background-image: url(../../../assets/img/universo11.jpg);
+  background-repeat: no-repeat;
+}
+
+.jumbotron{
+  position: relative;
+  z-index: 5;
+  width: 80%;
+  height: 408px;
+  padding: 20px;
+  background: url(../../../assets/img/fondoTabla1.jpg) center center;
+  opacity: .7;
+}
+
+
+
+.home{
+  padding: 19%;
+  text-align: center;
+  color: whitesmoke;
+  font-size: 400%;
+
+}
+
+.row{
+  margin-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.informacion{
+  color: aliceblue;
+  align-content: center;
+}
+
+table{
+  background-color: blanchedalmond;
+  opacity: 90%;
+  width: 25%;
+
+  margin: 15px;
+  text-align: center;
+}
+
+th{
+  color: #726a95;
+}
+
+td{
+  color: #709fb0;
+}
+
+img{
+  opacity: 100%;
+}

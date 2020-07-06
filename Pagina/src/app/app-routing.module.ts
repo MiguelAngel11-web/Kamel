@@ -12,8 +12,11 @@ import { JuegoComponent } from './usuarios/juego/juego.component';
 import { BuscadorComponent } from './usuarios/buscador/buscador.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
+import { InterfazUsuarioComponent } from './usuarios/interfaz-usuario/interfaz-usuario.component';
 import { GraficaComponent } from './admin/grafica/grafica.component';
 import { NavbarComponent } from './usuarios/navbar/navbar.component';
+import { CarritoComponent } from './usuarios/carrito/carrito.component';
+
 
 
 
@@ -31,7 +34,9 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'question', component: QuestionComponent },
   { path: 'login', component: LoginComponent },
-   { path: 'registro', component: RegistroComponent },
+  { path: 'registro', component: RegistroComponent },
+  { path: 'carro', component: CarritoComponent },
+  { path: 'interfazUser', component: InterfazUsuarioComponent },
   { path: 'buscador/:nombrej', component: BuscadorComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

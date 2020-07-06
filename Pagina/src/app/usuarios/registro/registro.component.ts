@@ -9,6 +9,7 @@ import {
 import { Validator } from './validator';
 
 import { ApiService } from '../../service/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -19,7 +20,7 @@ export class RegistroComponent implements OnInit {
   forma: FormGroup;
   fb: FormControl;
   exito = false;
-  constructor(private api:ApiService,public builder :FormBuilder) {
+  constructor(private api:ApiService,public builder :FormBuilder, public router: Router) {
 
     this.forma = this.builder.group({
       username: ['', [
@@ -71,6 +72,9 @@ export class RegistroComponent implements OnInit {
     this.api.alta(`https://kinder-mountie-14642.herokuapp.com/registro`,body)
     .then((data)=>{console.log(data)})
     .catch((err)=>{console.log(err)})
+    if(this.forma.value){
+      this.router.navigate(['/home']);
+    }
   }
 
   get username(){return this.forma.get("username")}

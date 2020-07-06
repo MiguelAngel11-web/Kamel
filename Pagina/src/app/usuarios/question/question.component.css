@@ -14,5 +14,10 @@
 }
 
 .fondo{
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 10px;
   background-image: url(../../../assets/img/18.jpg);
 }
+

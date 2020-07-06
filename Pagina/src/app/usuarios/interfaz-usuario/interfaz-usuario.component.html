@@ -1,0 +1,65 @@
+<app-navbar></app-navbar>
+<div class="fondoUser">
+
+    <div class="row">
+      <div class="col-4">
+        <div class="list-group" id="list-tab" role="tablist">
+          <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+          <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Perfil</a>
+          <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Configuración</a>
+        </div>
+      </div>
+      <div class="col-8 informacion">
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active letras" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+
+            <div class="jumbotron jumbotron-fluid">
+              <div class="container home">
+                <h1 class="display-4">Bienvenido <strong>@user</strong></h1>
+                <p class="lead">
+                  Revisa tu perfil y verifica que tus datos sean correctos.
+                  <br>
+                  <br>Siempre puedes cambiarlos <i class="far fa-smile-wink"></i>
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <img src="../../../assets/img/16.jpg" alt="" height="150px">
+                  </th>
+                  <th scope="col">JAQUELINE BARRERA</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row" rowspan="2">ID personal</th>
+                  <td>al174372</td>
+                </tr>
+                <tr>
+                  <td>http://localhost:4200/interfazUser</td>
+                </tr>
+                <tr>
+                  <th scope="row">Correo electrónico para inicio de sesión</th>
+                  <td>jaqui@gmail.com</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+          <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+            Yo muy very good :o
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</div>
+
+<app-footer></app-footer>>
