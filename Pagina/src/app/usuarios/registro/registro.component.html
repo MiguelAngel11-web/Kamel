@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 <body>
-
+  <div class="container"></div>
   <div id="clouds">
     <div class="cloud x1"></div>
     <!-- Time for multiple clouds to dance around -->
@@ -15,46 +15,97 @@
 
     <div id="login">
 
-      <form [formGroup]="forma" (ngSubmit)="onSubmit()" >
+      <form class="responsive" [formGroup]="forma" novalidate (ngSubmit)="onSubmit()" >
 
         <fieldset class="clearfix">
 
-          <p>
-            <span class="fontawesome-user form-control"></span>
-            <input #user type="text" value="Digite usuario..." placeholder="Digite usuario..."
-              onBlur="if(this.value == '') this.value = 'Digite usuario...'" onFocus="if(this.value == 'Digite usuario...') this.value = ''"
-              formControlName="username"
-              required
-              >
-            </p>
+               <div class="form-group has-success">
+                <span class="fontawesome-user form-control"></span>
+                <input type="text"
+                placeholder="Digite usuario..."
+                class="form-control"
+                [class.is-invalid]="UserIsInvalid"
+                [class.is-valid]=" UserIsValid"
+                formControlName="username">
+
+                <div class="invalid-feedback"  *ngIf="username.invalid && (username.dirty || username.touched)">
+                  <p *ngIf="username.errors.required">
+                    Username es requerido
+                  </p>
+                  <p *ngIf="username.errors.minlength">
+                    Username tiene que tener más de tres carácteres
+                  </p>
+                </div>
+
+              </div>
+
           <!-- JS because of IE support; better: placeholder="Username" -->
-          <p>
+
+          <div class="form-group has-success">
             <span class="fontawesome-envelope form-control"></span>
-            <input #email type="email" value="example@gmail.com" placeholder="example@gmail.com"
-              onBlur="if(this.value == '') this.value = 'example@gmail.com'" onFocus="if(this.value == 'example@gmail.com') this.value = ''"
-              formControlName="email"
-              required>
-            </p>
+            <input type="email"
+             placeholder="example@gmail.com"
+            class="form-control"
+            [class.is-invalid]="EmailIsInvalid"
+            [class.is-valid]=" EmailIsValid"
+            formControlName="email">
+
+            <div class="invalid-feedback"  *ngIf="email.invalid && (email.dirty || email.touched)">
+              <p *ngIf="email.errors.required">
+                Correo electronico es requerido
+              </p>
+              <p *ngIf="email.errors.minlength">
+                Correo electronico mayor a 10 carácteres.
+              </p>
+              <p  *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.email">
+                Correo electronico invalido.
+              </p>
+              <p  *ngIf="email.errors.noDisponible">
+                 Este correo no esta disponible
+              </p>
+            </div>
+
+          </div>
           <!-- JS because of IE support; better: placeholder="Email" -->
-          <p>
+          <div class="form-group has-success">
             <span class="fontawesome-lock form-control"></span>
-            <input #pass type="password" value="Password"  placeholder="Password"
-              onBlur="if(this.value == '') this.value = 'Password'"
-              onFocus="if(this.value == 'Password') this.value = ''"
-              formControlName="password"
-              required>
-            </p>
+            <input type="password"
+            placeholder="Password"
+            class="form-control"
+            [class.is-invalid]="PassIsInvalid"
+            [class.is-valid]=" PassIsValid"
+            formControlName="password">
+
+            <div class="invalid-feedback"  *ngIf="password.invalid && (password.dirty || password.touched)">
+              <p *ngIf="password.errors.required">
+                Contraseña es requerida
+              </p>
+              <p *ngIf="password.errors.minlength">
+                Contraseña tiene que tener más de cinco carácteres
+              </p>
+
+            </div>
+
+          </div>
           <!-- JS because of IE support; better: placeholder="Password" -->
-          <p>
+          <div class="form-group has-success">
             <span class="fontawesome-lock form-control"></span>
-            <input type="password" value="Password" placeholder="Re-confrim password"
-              onBlur="if(this.value == '') this.value = 'Password'"
-              onFocus="if(this.value == 'Password') this.value = ''"
-              formControlName="confirmPassword"
-              required>
-            </p>
+            <input type="password"
+            placeholder="Confirm password"
+            class="form-control"
+            [class.is-invalid]="ConfirmPassIsInvalid"
+            [class.is-valid]="ConfirmPassIsValid"
+            formControlName="confirmPassword">
+
+            <div class="invalid-feedback"  >
+              <p *ngIf="forma.controls['confirmPassword'].hasError('NoIguales')">
+              No coinciden las contraseñas
+              <p>
+            </div>
+
+          </div>
           <!-- JS because of IE support; better: placeholder="Password" -->
-          <p><input type="submit" (click)="RegistroNuevo()" [disabled]="forma.invalid" value="Registrarse"></p>
+          <p><input type="submit"  value="Registrarse"></p>
 
         </fieldset>
 
@@ -68,7 +119,14 @@
         <span class="fontawesome-arrow-right"></span>
       </p>
 
-    </div> <!-- end login -->
+
+    </div><!--  end login -->
+     <div *ngIf="exito" class="alert alert-success exito" role="alert">
+        <h4 class="alert-heading">Registrado!</h4>
+        <p>Ohhhh yeah. Tu cuenta a sido registrada con exito, ahora formas parte de Kamel. ¡Bienvenido!</p>
+        <hr>
+        <p class="mb-0">Navega en nuestra página y dejate llevar.</p>
+      </div>
   </div>
 
 </body>

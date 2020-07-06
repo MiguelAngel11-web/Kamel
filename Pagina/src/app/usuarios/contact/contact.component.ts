@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators,FormBuilder } from '@angular/forms';
 import { ApiService } from './../../service/api.service';
 /**
  * @title Stepper with optional steps
@@ -13,22 +13,29 @@ import { ApiService } from './../../service/api.service';
 })
 export class ContactComponent implements OnInit {
 
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  isOptional = false;
+
   forma: FormGroup;
 
-  constructor(private apisService: ApiService) {
-    this.forma = new FormGroup({
-      'nombre': new FormControl('', [Validators.required, Validators.minLength(3)]),
-      'msj': new FormControl('',Validators.required),
-      'email': new FormControl('',[Validators.required,Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]),
-      'phone':new FormControl('',
-      [ Validators.required,
+  constructor(private apisService: ApiService, public fb : FormBuilder) {
+    this.forma = this.fb.group({
+      nombre: ['', [Validators.required, Validators.minLength(10)]],
+      msj: ['',[Validators.required,Validators.maxLength(50)]],
+      email: ['',[Validators.required,Validators.email]],
+      phone:['',
+      [
+        Validators.required,
         Validators.pattern(/^\d+$/),
         Validators.maxLength(13),
-        Validators.minLength(10)])
+        Validators.minLength(10)]]
  });
+  }
+
+  onSubmit(){
+    if(this.forma.valid){
+      this.MandarCorreo();
+    }else{
+      this.forma.markAllAsTouched();
+    }
   }
 
   MandarCorreo(){
@@ -43,13 +50,27 @@ export class ContactComponent implements OnInit {
     this.forma.reset();
   }
 
-  ngOnInit() {
-    /*this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ''
-    });*/
-  }
+  ngOnInit() {}
+
+  get nombre(){return this.forma.get('nombre')}
+  get email(){return this.forma.get('email')}
+  get phone(){return this.forma.get('phone')}
+  get msj(){return this.forma.get('msj')}
+
+  get EmailIsValid(){return this.email.touched && this.email.valid;}
+
+  get EmailIsInvalid(){return this.email.touched && this.email.invalid;}
+
+  get NombreIsValid(){ return this.nombre.touched && this.nombre.valid;}
+
+  get NombreIsInvalid(){return this.nombre.touched && this.nombre.invalid;}
+
+  get PhoneIsValid(){return this.phone.touched && this.phone.valid;}
+
+  get PhoneIsInvalid(){return this.phone.touched && this.phone.invalid;}
+
+  get MsjIsValid(){return this.msj.touched && this.msj.valid;}
+
+  get MsjIsInvalid(){return this.msj.touched && this.msj.invalid;}
 
 }

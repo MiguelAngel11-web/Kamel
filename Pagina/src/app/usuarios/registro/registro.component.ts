@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormControl,
-  Validators
+  Validators,
+  FormBuilder
 } from '@angular/forms';
 
-import { CustomValidators } from './validator';
+import { Validator } from './validator';
 
 import { ApiService } from '../../service/api.service';
 import { Router } from '@angular/router';
@@ -18,33 +19,43 @@ import { Router } from '@angular/router';
 export class RegistroComponent implements OnInit {
   forma: FormGroup;
   fb: FormControl;
+  exito = false;
+  constructor(private api:ApiService,public builder :FormBuilder, public router: Router) {
 
-  constructor(private api:ApiService, private router: Router) {
-
-
-    this.forma = new FormGroup({
-      username: new FormControl('', [
+    this.forma = this.builder.group({
+      username: ['', [
         Validators.required,
         Validators.minLength(3),
-      ]),
-      email: new FormControl('', [
+      ]],
+      email: ['', [
         Validators.required,
-        Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
-      ]),
-      password: new FormControl('', Validators.required),
-      confirmPassword: new FormControl('', Validators.required),
-    });
+        Validators.minLength(10),
+        Validators.email,
+      ],Validator.validateEmail(this.api)],
+      password:['', [Validators.required,Validators.minLength(5)]],
+      confirmPassword: ['' ,Validators.compose([Validators.required])],
+    },{
+      // check whether our password and confirm password match
+      validator: Validator.passwordMatchValidator
+   });
 
-    this.forma
-      .get('confirmPassword')
-      .setValidators(CustomValidators.equals(this.forma.get('password')));
+
+
   }
 
+
   onSubmit(): void {
-    const password = this.forma.get('password').value as string;
-    // Tú lógica de negocio...
-    console.log(password);
-    console.log('Form--> ',this.forma.value);
+
+    if(this.forma.valid){
+
+      this.RegistroNuevo();
+      this.exito = true;
+      console.log(this.forma.value);
+      this.forma.reset();
+    }else{
+      this.forma.markAllAsTouched();
+      console.log("No valido")
+    }
   }
 
   ngOnInit(): void {}
@@ -64,5 +75,43 @@ export class RegistroComponent implements OnInit {
     if(this.forma.value){
       this.router.navigate(['/home']);
     }
+  }
+
+  get username(){return this.forma.get("username")}
+  get email(){return this.forma.get("email")}
+  get password(){return this.forma.get("password")}
+  get confirmPassword(){return this.forma.get("confirmPassword")}
+
+  get EmailIsValid(){
+    return this.email.touched && this.email.valid;
+  }
+
+  get EmailIsInvalid(){
+    return this.email.touched && this.email.invalid;
+  }
+  get UserIsValid(){
+    return this.username.touched && this.username.valid;
+  }
+
+  get UserIsInvalid(){
+    return this.username.touched && this.username.invalid;
+  }
+
+  get PassIsValid(){
+    return this.password.touched && this.password.valid;
+  }
+
+  get PassIsInvalid(){
+    return this.password.touched && this.password.invalid;
+  }
+
+  get ConfirmPassIsValid(){
+
+    return this.confirmPassword.touched && this.confirmPassword.valid;
+  }
+
+  get ConfirmPassIsInvalid(){
+
+    return this.confirmPassword.touched && this.confirmPassword.invalid;
   }
 }
