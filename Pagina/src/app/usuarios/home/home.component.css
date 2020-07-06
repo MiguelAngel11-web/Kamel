@@ -5,8 +5,7 @@
 .titulo{
     text-align: center;
     background-image: url(../../../assets/img/09.jpg);
-    color: whitesmoke;
-    opacity: 30%;
+  
 }
   .titulo:hover{
     opacity: 80%;
