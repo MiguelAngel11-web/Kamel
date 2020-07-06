@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -42,6 +43,7 @@ import { CodigoQRComponent } from './usuarios/codigo-qr/codigo-qr.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { GraficaComponent } from './admin/grafica/grafica.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CarritoComponent } from './usuarios/carrito/carrito.component';
 
 
 @NgModule({
@@ -63,7 +65,8 @@ import { HttpClientModule } from '@angular/common/http';
     CodigoQRComponent,
     LoginAdminComponent,
     GraficaComponent,
-    InterfazUsuarioComponent
+    InterfazUsuarioComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,
