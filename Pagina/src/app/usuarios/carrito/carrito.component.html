@@ -23,11 +23,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="table-dark" *ngFor="let p of productos">
+    <tr class="table-dark" *ngFor="let p of items | async">
       <th scope="row"></th>
       <td>{{p.name}}</td>
       <td>{{p.precio}}</td>
       <td>Column content</td>
+      <td><button class="btn btn-danger" (click)="BorrarProducto(p.key)" type="button">Borrar</button></td>
     </tr>
   </tbody>
 </table>

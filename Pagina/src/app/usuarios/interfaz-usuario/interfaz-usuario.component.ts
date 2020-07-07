@@ -38,7 +38,6 @@ export class InterfazUsuarioComponent implements OnInit {
 
       this.items.subscribe((data)=>{
         this.favoritos=data;
-        console.log(this.favoritos)
         })
 
     })
