@@ -45,6 +45,9 @@ export class LoginComponent implements OnInit {
     });
     });
 
+    this.api.GetIDUser(`https://kinder-mountie-14642.herokuapp.com/getID/${email}`)
+    .then((data)=>{console.log(data); this.api.id = data})
+
   }
 
   /*----------------------------*/

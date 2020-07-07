@@ -14,9 +14,9 @@
           <small>
 
             <div class="example-button-row">
-              <button mat-icon-button color="primary" aria-label="Example icon-button with a heart icon" class="fav">
+              <a [routerLink]="['/interfazUser',id]" mat-icon-button color="primary" aria-label="Example icon-button with a heart icon" class="fav">
                 <mat-icon>favorite</mat-icon>
-              </button>
+              </a>
 
               <a [routerLink]="['/carro',id]"  mat-icon-button color="warn" aria-label="Example icon-button with a heart icon" class="fav">
                 <mat-icon>shopping_cart</mat-icon>
