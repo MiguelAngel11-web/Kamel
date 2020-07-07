@@ -2,7 +2,7 @@
 <div class="fondo">
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-dismiss="modal"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -44,7 +44,7 @@
                     -->
                     <a id="btn-fblogin" class="btn btn-danger btn-lg  btn-block" (click)="EntrarconGoogle()"><i class="fab fa-google-plus-g"></i>Entrar con Google</a>
                     <a type="button" class="btn btn-primary btn-lg  btn-block" (click)="EntrarconFacebook()"><i class="fab fa-facebook"></i> Entrar con Facebook</a>
-                    <p><input class="botones" type="submit" (click)="entrar(user.value, pass.value)"  value="Sign In"></p>
+                    <p><input class="botones" type="submit" (click)="entrar(user.value, pass.value)"  value="Sign In"  data-dismiss="modal"></p>
 
                   </fieldset>
                 </form>

@@ -36,6 +36,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'carro/:id', component: CarritoComponent },
+  { path: 'interfazUser', component: InterfazUsuarioComponent },
   { path: 'interfazUser/:id', component: InterfazUsuarioComponent },
   { path: 'buscador/:nombrej', component: BuscadorComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }

@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
     this.api.getUser(`https://kinder-mountie-14642.herokuapp.com/getUser/${email}`).then((data:any)=>{
       if(data){
         this.api.user=data;
+        this.router.navigate(['/interfazUser']);
       }
     });
     });
