@@ -299,6 +299,11 @@ input[type="password"] {
   background-color: transparent;
 }
 
+.modal-backdrop {
+  /* bug fix - no overlay */
+  display: none;
+}
+
 .botones{
   margin-top: 15px;
 }
