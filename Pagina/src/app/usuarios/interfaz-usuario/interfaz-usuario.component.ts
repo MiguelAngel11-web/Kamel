@@ -34,7 +34,7 @@ export class InterfazUsuarioComponent implements OnInit {
       }
 
       this.items = db.list("usuario/"+body.id+"/favoritos").valueChanges();
-      this.api.AgregarFavoritos(`http://localhost:5000/fav`,body);
+      this.api.AgregarFavoritos(`https://kinder-mountie-14642.herokuapp.com/fav`,body);
 
       this.items.subscribe((data)=>{
         this.favoritos=data;
