@@ -13,16 +13,28 @@
           {{juego.nombre}}
           <small>
 
-            <div class="example-button-row">
+            <div class="example-button-row" *ngIf="isLogin">
+
               <a [routerLink]="['/interfazUser',id]" mat-icon-button color="primary" aria-label="Example icon-button with a heart icon" class="fav">
                 <mat-icon>favorite</mat-icon>
               </a>
-
               <a [routerLink]="['/carro',id]"  mat-icon-button color="warn" aria-label="Example icon-button with a heart icon" class="fav">
                 <mat-icon>shopping_cart</mat-icon>
               </a>
 
             </div>
+
+            <div class="example-button-row" *ngIf="!isLogin">
+
+              <a [routerLink]="['/registro']" mat-icon-button color="primary" aria-label="Example icon-button with a heart icon" class="fav">
+                <mat-icon>favorite</mat-icon>
+              </a>
+              <a [routerLink]="['/registro']"  mat-icon-button color="warn" aria-label="Example icon-button with a heart icon" class="fav">
+                <mat-icon>shopping_cart</mat-icon>
+              </a>
+
+            </div>
+
           </small>
         </h3>
         <hr>

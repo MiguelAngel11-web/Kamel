@@ -22,12 +22,14 @@ import { Observable } from 'rxjs';
 export class CarritoComponent implements OnInit {
 
   @Input() juego:Juego;
-  productos:[]=[]
+  productos:[]=[];
   itemList: AngularFireList<any>;
   items: Observable<any>;
 
 
-  constructor(private juegoService : JuegoService,public activatedRoute: ActivatedRoute,public api : ApiService ,public db: AngularFireDatabase){
+  constructor(private juegoService : JuegoService,
+    public activatedRoute: ActivatedRoute,
+    public api : ApiService ,public db: AngularFireDatabase){
     this.activatedRoute.params.subscribe(params=>{
       this.juego = this.juegoService.getJuego(params['id']);
 
@@ -50,4 +52,3 @@ export class CarritoComponent implements OnInit {
 
   ngOnInit() {}
 }
-

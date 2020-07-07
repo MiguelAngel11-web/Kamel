@@ -17,6 +17,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./interfaz-usuario.component.css']
 })
 export class InterfazUsuarioComponent implements OnInit {
+  public user: any;
+  public name: any;
 
   @Input() juego:Juego;
   favoritos:[]=[]
@@ -45,6 +47,9 @@ export class InterfazUsuarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.user = this.api.user;
+
+    console.log('USUARIO -->', this.user);
   }
 
 }

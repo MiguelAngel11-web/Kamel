@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
       if(data){
         console.log(data);
         this.api.user=data;
+        this.router.navigate(['/interfazUser']);
       }
     });
     });
