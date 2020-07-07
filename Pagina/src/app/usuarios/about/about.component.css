@@ -21,6 +21,11 @@ th{
   color: white;
 }
 
+td{
+  margin-right: 50px;
+  width: 25%;
+}
+
 
 .pause{
   list-style:none;
