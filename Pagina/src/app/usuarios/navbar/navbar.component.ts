@@ -10,9 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   public isLogin = false;
-  public user:any;
+  public user: any;
 
-  constructor(private router: Router, private api: ApiService,private activatedRoute: ActivatedRoute ) { }
+  constructor(private router: Router, private api: ApiService, private activatedRoute: ActivatedRoute ) { }
 
   ngOnInit(): void {
     this.user = this.api.user;

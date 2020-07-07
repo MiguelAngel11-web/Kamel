@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { JuegoService, Juego } from './../shared/juego.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { ApiService } from './../../service/api.service';
 
 @Component({
   selector: 'app-juego',
@@ -14,9 +16,10 @@ export class JuegoComponent implements OnInit {
   nin: boolean = false;
   play: boolean = false;
 
+  public isLogin = false;
+  public user: any;
 
-
-  constructor( public juegoService: JuegoService, public activatedRoute: ActivatedRoute ) {
+  constructor( public juegoService: JuegoService, public activatedRoute: ActivatedRoute, private router: Router, private api: ApiService ) {
 
     this.activatedRoute.params.subscribe( params => {
                                                       this.juego = juegoService.getJuego( params['id'] );
@@ -40,6 +43,11 @@ export class JuegoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.user = this.api.user;
+    if(this.user){
+      this.isLogin = true;
+    }
+    console.log(this.user);
   }
 
 }

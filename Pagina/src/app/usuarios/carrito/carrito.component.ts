@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -11,6 +11,10 @@ import { JuegoService, Juego } from './../shared/juego.service';
   styleUrls: ['./carrito.component.css']
 })
 export class CarritoComponent implements OnInit {
+  @Input() juego: Juego;
+  constructor( public juegoService: JuegoService ) {}
+
+
   displayedColumns: string[] = ['cantidad', 'videojuego', 'precio', 'subtotal'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
@@ -29,7 +33,7 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {cantidad: 1, videojuego: 'Hydrogen', precio: 1.0079, subtotal: 'H'},
+  {cantidad: 1, videojuego: 'Hydrogen', precio: 3.6, subtotal: 'H'},
   {cantidad: 2, videojuego: 'Helium', precio: 4.0026, subtotal: 'He'},
   {cantidad: 3, videojuego: 'Lithium', precio: 6.941, subtotal: 'Li'},
   {cantidad: 4, videojuego: 'Beryllium', precio: 9.0122, subtotal: 'Be'},

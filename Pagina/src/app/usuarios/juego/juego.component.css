@@ -31,8 +31,10 @@ img:hover{
 .example-button-row button{
   margin-right: 5%;
   margin-left: 5%;
+  border-style: inherit;
 }
 
 .example-button-row button:hover{
   color: black;
+  border-style: inherit;
 }
