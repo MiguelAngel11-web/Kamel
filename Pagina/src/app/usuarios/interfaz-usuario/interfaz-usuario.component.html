@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/solar/bootstrap.min.css" integrity="sha384-iDw+DjLp94cdk+ODAgTY4IZ6d9aaRpG9KHr168TPxrfQ9wv/DTVC+cWyojoxjHBT" crossorigin="anonymous">
 <app-navbar></app-navbar>
 <div class="fondoUser"  aria-hidden="true">
 
@@ -33,10 +34,23 @@
           </div>
 
           <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
-            <ng-container *ngFor="let f of favoritos">
-            <p>{{f.name}}</p>
-          </ng-container>
-            Yo muy very good :o
+
+            <table class="table table-hover">
+              <thead>
+                <tr class="table">
+                  <th scope="col" style="color:'#faf0af'">
+                    Mis Favoritos
+                    <mat-icon aria-hidden="false" aria-label="Example home icon">favorite</mat-icon></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-light" *ngFor="let f of favoritos">
+                  <th scope="row"></th>
+                  <td>{{f.name}}</td>
+                </tr>
+              </tbody>
+            </table>
+
           </div>
 
         </div>
@@ -46,4 +60,4 @@
 
 </div>
 
-<app-footer></app-footer>>
+<app-footer></app-footer>

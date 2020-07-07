@@ -39,22 +39,11 @@
 }
 
 table{
-  background-color: blanchedalmond;
-  opacity: 90%;
-  width: 25%;
-
+  background-color: #84142d;
+  border-color: inherit;
+  width: 80%;
   margin: 15px;
   text-align: center;
 }
 
-th{
-  color: #726a95;
-}
 
-td{
-  color: #709fb0;
-}
-
-img{
-  opacity: 100%;
-}
