@@ -9,6 +9,7 @@ import { ApiService } from '../../service/api.service'
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -22,7 +23,6 @@ import { Observable } from 'rxjs';
 export class CarritoComponent implements OnInit {
 
   @Input() juego:Juego;
-  productos:[]=[];
   itemList: AngularFireList<any>;
   items: Observable<any>;
 
@@ -39,16 +39,21 @@ export class CarritoComponent implements OnInit {
         id:this.api.id
       }
 
-      this.items = db.list("usuario/"+body.id+"/carrito").valueChanges();
       this.api.AgregarProducto(`https://kinder-mountie-14642.herokuapp.com/producto`,body);
-
-      this.items.subscribe((data)=>{
-        this.productos=data;
-        console.log(this.productos)
-        })
-
+      this.itemList = db.list("usuario/"+body.id+"/carrito");
+      this.items = db.list("usuario/"+body.id+"/carrito").valueChanges();
+      this.items = this.itemList.snapshotChanges().pipe(
+        map(changes =>
+          changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+      );
     })
   }
 
+  BorrarProducto(key:string){
+    this.itemList.remove(key);
+  }
+
   ngOnInit() {}
+
 }

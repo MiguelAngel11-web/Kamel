@@ -35,11 +35,9 @@ export class LoginComponent implements OnInit {
 
     this.api.login(`https://kinder-mountie-14642.herokuapp.com/signin/${email}/${pass}`)
     .then((data:any)=>{
-      console.log(data)
-      console.log("NavBar");
+
     this.api.getUser(`https://kinder-mountie-14642.herokuapp.com/getUser/${email}`).then((data:any)=>{
       if(data){
-        console.log(data);
         this.api.user=data;
         this.router.navigate(['/interfazUser']);
       }
@@ -47,7 +45,7 @@ export class LoginComponent implements OnInit {
     });
 
     this.api.GetIDUser(`https://kinder-mountie-14642.herokuapp.com/getID/${email}`)
-    .then((data)=>{console.log(data); this.api.id = data})
+    .then((data)=>this.api.id = data)
 
   }
 
