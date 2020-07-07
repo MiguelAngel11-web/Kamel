@@ -13,26 +13,25 @@
           {{juego.nombre}}
           <small>
 
-
             <div class="example-button-row" *ngIf="isLogin">
-              <button mat-icon-button color="primary" aria-label="Example icon-button with a heart icon" class="fav" [routerLink]="['/interfazUser']">
-                <mat-icon>favorite</mat-icon>
-              </button>
 
-              <button mat-icon-button color="warn" aria-label="Example icon-button with a heart icon" class="fav"  [routerLink]="['/carro']">
+              <a [routerLink]="['/interfazUser',id]" mat-icon-button color="primary" aria-label="Example icon-button with a heart icon" class="fav">
+                <mat-icon>favorite</mat-icon>
+              </a>
+              <a [routerLink]="['/carro',id]"  mat-icon-button color="warn" aria-label="Example icon-button with a heart icon" class="fav">
                 <mat-icon>shopping_cart</mat-icon>
-              </button>
+              </a>
 
             </div>
 
             <div class="example-button-row" *ngIf="!isLogin">
-              <button mat-icon-button color="primary" aria-label="Example icon-button with a heart icon" class="fav" [routerLink]="['/registro']">
-                <mat-icon>favorite</mat-icon>
-              </button>
 
-              <button mat-icon-button color="warn" aria-label="Example icon-button with a heart icon" class="fav" [routerLink]="['/registro']">
+              <a [routerLink]="['/registro']" mat-icon-button color="primary" aria-label="Example icon-button with a heart icon" class="fav">
+                <mat-icon>favorite</mat-icon>
+              </a>
+              <a [routerLink]="['/registro']"  mat-icon-button color="warn" aria-label="Example icon-button with a heart icon" class="fav">
                 <mat-icon>shopping_cart</mat-icon>
-              </button>
+              </a>
 
             </div>
 

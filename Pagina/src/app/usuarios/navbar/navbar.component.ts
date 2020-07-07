@@ -19,13 +19,11 @@ export class NavbarComponent implements OnInit {
     if(this.user){
       this.isLogin = true;
     }
-    console.log(this.user);
   }
 
   async Salir(){
     await this.api.LogOut(`https://kinder-mountie-14642.herokuapp.com/salir`)
     .then((res:any)=>{
-      console.log(res)
       if(res){
       this.isLogin = false;
       this.user = null;

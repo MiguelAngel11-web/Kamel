@@ -69,8 +69,8 @@ export class RegistroComponent implements OnInit {
     };
     this.api.EmailAndPassword(`https://kinder-mountie-14642.herokuapp.com/crear/${email}/${password}`)
 
-    this.api.alta(`https://kinder-mountie-14642.herokuapp.com/registro`,body)
-    .then((data)=>{console.log(data)})
+    this.api.alta(`http://localhost:5000/registro`,body)
+    .then((data)=>{console.log(data); this.api.id=data})
     .catch((err)=>{console.log(err)})
     if(this.forma.value){
       this.router.navigate(['/home']);

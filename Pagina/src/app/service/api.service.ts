@@ -8,6 +8,7 @@ import { first } from 'rxjs/operators';
 export class ApiService {
   correo:string;
   user:any;
+  id:any;
   constructor(private httpClient: HttpClient) { }
 
   alta(url:string,body:any) {
@@ -39,6 +40,22 @@ export class ApiService {
 
   async EnviarCorreo(url:string,body:any){
     return await this.httpClient.post(url, body).toPromise().catch((err)=>{err});
+  }
+
+  async AgregarProducto(url:string,body:any){
+    return await this.httpClient.post(url,body).toPromise();
+  }
+
+  async AgregarFavoritos(url:string,body:any){
+    return await this.httpClient.post(url,body).toPromise();
+  }
+
+  async GetProducto(url:string){
+    return await this.httpClient.get(url).toPromise();
+  }
+
+  async GetIDUser(url:string){
+    return await this.httpClient.get(url).toPromise();
   }
 
 

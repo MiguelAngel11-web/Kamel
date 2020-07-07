@@ -4,12 +4,13 @@
 
 .titulo{
     text-align: center;
-    background-image: url(../../../assets/img/02.jpeg);
+    background-image: url(../../../assets/img/02.jpg);
     color: whitesmoke;
-    opacity: 30%;
+    opacity: 0.7;
+
 }
   .titulo:hover{
-    opacity: 80%;
+    opacity: 1;
   }
     .titulo:hover .animado{
       color: white;
