@@ -28,8 +28,10 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/question']"><i class="fas fa-comment"></i>Questions</a>
       </li>
-      <li class="nav-item" routerLinkActive="active" *ngIf="isLogin">
-        <a class="nav-link" [routerLink]="['/interfazUser']" style="color: #a7d129">{{ user | json }}</a>
+      <li class="nav-item" routerLinkActive="active" *ngIf="isLogin" >
+        <a *ngIf="Google" class="nav-link" [routerLink]="['/interfazUser']" style="color: #a7d129">{{ user.displayName }}</a>
+        <a *ngIf="Facebook" class="nav-link" [routerLink]="['/interfazUser']" style="color: #a7d129">{{ user.displayName }}</a>
+        <a *ngIf="Normal" class="nav-link" [routerLink]="['/interfazUser']" style="color: #a7d129">{{ user.email }}</a>
       </li>
     </ul>
 
