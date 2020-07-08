@@ -20,9 +20,10 @@
 }
 .contact-section{
   padding-top: 0px;
+  width: 100%;
 }
 .contact-section .col-md-6{
-  width: 100%;
+  width: 50%;
 }
 
 .form-line{
@@ -46,10 +47,11 @@ textarea.form-control {
    /* margin-top: px;*/
 }
 
+
 .submit{
   font-size: 1.1em;
   float: right;
-  width: 350px;
+  width: 100%;
   background-color: #d44179;
   color: #fff;
 

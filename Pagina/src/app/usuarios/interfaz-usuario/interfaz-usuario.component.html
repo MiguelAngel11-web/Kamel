@@ -1,0 +1,113 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/solar/bootstrap.min.css" integrity="sha384-iDw+DjLp94cdk+ODAgTY4IZ6d9aaRpG9KHr168TPxrfQ9wv/DTVC+cWyojoxjHBT" crossorigin="anonymous">
+<app-navbar></app-navbar>
+<div class="fondoUser"  aria-hidden="true">
+
+    <div class="row">
+      <div class="col-4">
+        <div class="list-group" id="list-tab" role="tablist">
+          <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+          <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Compras Realizadas</a>
+          <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Mis Favoritos</a>
+        </div>
+      </div>
+      <div class="col-8 informacion">
+        <div class="tab-content" id="nav-tabContent">
+<<<<<<< HEAD
+
+          <div class="tab-pane fade show active letras" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+            <div class="jumbotron jumbotron-fluid">
+=======
+          <div class="tab-pane fade show active letras" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+             <!-- User normal -->
+            <div class="jumbotron jumbotron-fluid" *ngIf="Normal">
+>>>>>>> 6ecbdc9d9372b075d8a7050e0e5e948be148d3cc
+              <div class="container home">
+                <h1 class="display-4">Bienvenido <strong>{{ user | json }}</strong></h1>
+                <p class="lead">
+                  Revisa tus consultas.
+                  <br>
+                  <br>Siempre estaran aquí presentes <i class="far fa-smile-wink"></i>
+                </p>
+              </div>
+            </div>
+<<<<<<< HEAD
+=======
+            <!-- User de google -->
+            <div class="jumbotron jumbotron-fluid" *ngIf="Google">
+              <div class="container home" style="  padding: 10%;">
+                <img src="{{user.photoURL}}" width="10%" height="10%" alt="">
+                <h1 class="display-4">Bienvenido <strong>{{ user.displayName}}</strong></h1>
+                <p class="lead">
+                  Revisa tus consultas.
+                  <br>
+                  <br>Siempre estaran aquí presentes <i class="far fa-smile-wink"></i>
+                </p>
+              </div>
+            </div>
+            <!-- User de facebook -->
+            <div class="jumbotron jumbotron-fluid" *ngIf="Facebook">
+              <div class="container home">
+                <img src="{{user.photoURL}}" width="10%" height="20%" alt="">
+                <h1 class="display-4">Bienvenido <strong>{{ user.displayName}}</strong></h1>
+                <p class="lead">
+                  Revisa tus consultas.
+                  <br>
+                  <br>Siempre estaran aquí presentes <i class="far fa-smile-wink"></i>
+                </p>
+              </div>
+            </div>
+
+>>>>>>> 6ecbdc9d9372b075d8a7050e0e5e948be148d3cc
+          </div>
+
+          <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+
+            <table class="table table-hover compras">
+              <thead>
+                <tr class="table">
+                  <th scope="col" colspan="3">
+                    Mis Compras
+                    <i class="fas fa-shopping-basket"></i></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-light" *ngFor="let c of itemsCompras | async">
+                  <td>{{c.name}}</td>
+                  <td>{{c.precio}}</td>
+                  <td><button type="button" class="btn btn-lg active boton" aria-pressed="true" (click)="BorrarCompra(c.key)"><i class="far fa-trash-alt"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+
+
+          </div>
+
+          <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+
+            <table class="table table-hover favoritos">
+              <thead>
+                <tr class="table">
+                  <th scope="col" colspan="2">
+                    Mis Favoritos
+                    <i class="fas fa-heart"></i>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-light" *ngFor="let f of items | async">
+                  <td>{{f.name}}</td>
+                  <td><button type="button" class="btn btn-lg active boton" aria-pressed="true" (click)="BorrarFav(f.key)"><i class="far fa-trash-alt"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+</div>
+
+<app-footer></app-footer>

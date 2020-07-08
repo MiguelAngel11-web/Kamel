@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { JuegoService, Juego } from './../shared/juego.service';
 import { ActivatedRoute } from '@angular/router';
 
-
-import { Observable } from 'rxjs';
-
 @Component({
   selector: 'app-buscador',
   templateUrl: './buscador.component.html',
@@ -14,8 +11,6 @@ export class BuscadorComponent implements OnInit {
   nombrej: string;
   indice: number;
   mijuego: Juego;
-
-
 
   constructor( private juegoService: JuegoService, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( params => {

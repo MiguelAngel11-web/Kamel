@@ -42,7 +42,7 @@ export class JuegosComponent implements OnInit {
       this.misjuegos=res
       this.juegoServise.getJuegos(this.misjuegos)
     })
-    console.log(this.misjuegos);
+
   }
 
 }

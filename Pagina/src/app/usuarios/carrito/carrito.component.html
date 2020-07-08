@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4" style="font-size: 30px ">Tu carrito
+      <mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon>
+    </h1>
+    <p class="lead">Agrega todos los productos que quieras.
+      <mat-icon aria-hidden="false" aria-label="Example home icon">sentiment_satisfied_alt</mat-icon>
+    </p>
+  </div>
+</div>
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Videojuego</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Eliminar</th>
+      <th scope="col">Comprar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let p of items | async">
+      <td>{{p.name}}</td>
+      <td>{{p.precio}}</td>
+<<<<<<< HEAD
+      <td><input type="text" class="form-control is-valid" placeholder="Enter para borrar" (keyup.enter)="BorrarProducto(p.key)"></td>
+      <td><button type="button" class="btn btn-lg active boton" aria-pressed="true" (click)="FinalizarCompra(p.name,p.precio,p.key)"><i class="fas fa-cart-plus"></i></button></td>
+=======
+      <td>
+        <input type="text"class="form-control is-valid" id="inputValid" placeholder="Enter para borrar" (keyup.enter)="BorrarProducto(p.key)">Borrar</td>
+      <td><button class="btn btn-danger" (click)="Finalizar(p.name,p.precio,p.key)" type="button">Comprar</button></td>
+>>>>>>> 6ecbdc9d9372b075d8a7050e0e5e948be148d3cc
+    </tr>
+  </tbody>
+</table>
+
+<a class="btn btn-info btn-lg active" type="button" aria-pressed="true" [routerLink]="['/juegos']">Seguir comprando</a>
+
+<app-footer></app-footer>

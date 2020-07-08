@@ -1,15 +1,42 @@
 <app-navbar></app-navbar>
-<h1 class="animated fadeIn" >{{juego.nombre}} <small>{{juego.precio}}</small></h1>
+<h1 class="animated fadeIn" >{{juego.nombre}}</h1>
 <hr>
 
 <div class="row animated fadeIn fast">
     <div class="col md-4 text-center">
         <img width="300px" src="{{juego.img}}" alt="" class="img-fluid">
         <br><br>
-        <a [routerLink]="['/juegos']" class="btn btn-outline-danger btn-block">Regresar</a>
+        <a [routerLink]="['/juegos']" class="btn btn-danger btn-block">Regresar</a>
     </div>
     <div class="col md-8">
-        <h3>{{juego.nombre}}</h3>
+        <h3>
+          {{juego.nombre}}
+          <small>
+
+            <div class="example-button-row" *ngIf="isLogin">
+
+              <a [routerLink]="['/interfazUser',id]" mat-icon-button color="primary" aria-label="Example icon-button with a heart icon" class="fav">
+                <mat-icon>favorite</mat-icon>
+              </a>
+              <a [routerLink]="['/carro',id]"  mat-icon-button color="warn" aria-label="Example icon-button with a heart icon" class="fav">
+                <mat-icon>shopping_cart</mat-icon>
+              </a>
+
+            </div>
+
+            <div class="example-button-row" *ngIf="!isLogin">
+
+              <a [routerLink]="['/registro']" mat-icon-button color="primary" aria-label="Example icon-button with a heart icon" class="fav">
+                <mat-icon>favorite</mat-icon>
+              </a>
+              <a [routerLink]="['/registro']"  mat-icon-button color="warn" aria-label="Example icon-button with a heart icon" class="fav">
+                <mat-icon>shopping_cart</mat-icon>
+              </a>
+
+            </div>
+
+          </small>
+        </h3>
         <hr>
         <p>
             {{juego.descrip}}

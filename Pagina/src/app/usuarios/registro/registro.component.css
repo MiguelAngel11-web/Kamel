@@ -61,7 +61,7 @@ p {
 .container {
   left: 70%;
   position: absolute;
-  top: 55%;
+  top: 60%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
@@ -133,7 +133,7 @@ paddiong:0
 */
 
 #clouds {
-  padding: 50px 0;
+  padding: 300px 0;
   background: #c9dbe9;
   background: -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%);
   background: -linear-gradient(top, #c9dbe9 0%, #fff 100%);
@@ -287,3 +287,16 @@ paddiong:0
 .blue {
   color: #09c;
 }
+
+.exito{
+  position: absolute;
+  top:70px;
+  right: 165px;
+  width: 50%;
+}
+
+.responsive{
+  width: 100%;
+ /*  position: static; */
+}
+

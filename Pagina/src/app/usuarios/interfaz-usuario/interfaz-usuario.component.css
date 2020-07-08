@@ -1,0 +1,80 @@
+* {
+  box-sizing:border-box;
+}
+
+.fondoUser{
+  background-image: url(../../../assets/img/universo11.jpg);
+  background-repeat: no-repeat;
+}
+
+.jumbotron{
+  position: relative;
+  z-index: 5;
+  width: 80%;
+  height: 408px;
+  padding: 20px;
+  background: url(../../../assets/img/fondoTabla1.jpg) center center;
+  opacity: .7;
+}
+
+
+
+.home{
+  padding: 19%;
+  text-align: center;
+  color: whitesmoke;
+  font-size: 400%;
+
+}
+
+.row{
+  margin-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.informacion{
+  color: aliceblue;
+  align-content: center;
+}
+
+table{
+  border-color: inherit;
+  width: 80%;
+  margin: 5px;
+  text-align: center;
+  color: white;
+}
+
+
+.boton{
+  background-color: #c70039;
+  color: white;
+}
+
+  .boton:hover{
+    background-color: #900c3f;
+    opacity: 0.7;
+  }
+
+.compras{
+  background-color: #522546;
+}
+
+  .compras td{
+    background-color: #6c5b7b;
+  }
+
+  .compras tr:hover, .favoritos tr:hover{
+    opacity: 0.7;
+  }
+
+.favoritos{
+  background-color: #595238;
+}
+
+  .favoritos td{
+    background-color: #c7b198;
+  }
+
+

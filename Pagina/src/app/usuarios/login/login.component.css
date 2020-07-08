@@ -97,7 +97,7 @@ p {
   height: 50px;
 }
 
-#login form input[type="text"],
+#login form input[type="email"],
 input[type="password"] {
   background-color: #3b4148;
   border-radius: 0px 3px 3px 0px;
@@ -297,4 +297,13 @@ input[type="password"] {
   width: 100vw;
   height: 100vh;
   background-color: transparent;
+}
+
+.modal-backdrop {
+  /* bug fix - no overlay */
+  display: none;
+}
+
+.botones{
+  margin-top: 15px;
 }

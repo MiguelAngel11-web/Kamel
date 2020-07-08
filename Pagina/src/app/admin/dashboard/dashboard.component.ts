@@ -1,10 +1,10 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { AngularFireAuth } from '@angular/fire/auth';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -18,59 +18,75 @@ export class DashboardComponent implements OnInit {
   items: Observable<any>;
   ban:boolean=false;
 
-  form;
+  form:FormGroup;
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Card 1', cols: 2, rows: 3 },
+          { title: 'Altas a productos', cols: 1, rows: 2 },
+          { title: 'Bajas a porductos', cols: 2, rows: 5 },
         ];
       }
 
       return [
-        { title: 'Card 1', cols: 2, rows: 3 }
+        { title: 'Altas a productos', cols: 2, rows: 2 },
+        { title: 'Bajas a porductos', cols: 2, rows: 5 },
       ];
     })
   );
 
   constructor(private breakpointObserver: BreakpointObserver,private db: AngularFireDatabase, private fb: FormBuilder) {
+    const url = /^[A-Za-z][A-Za-z\d.+-]*:\/*(?:\w+(?::\w+)?@)?[^\s/]+(?::\d+)?(?:\/[\w#!:.?+=&%@\-/]*)?$/;
     this.form = fb.group({
       nombre: ['', Validators.required],
-     descripcion: ['', Validators.required],
-     consola: ['', Validators.required],
-     img: ['', Validators.required],
+      descripcion: ['', Validators.required],
+     consola: ['', [Validators.required,Validators.minLength(2),Validators.maxLength(15)]],
+     img: ['', [Validators.required,Validators.pattern(url)]],
      precio: ['', [
        Validators.required,
-       Validators.maxLength(6),
+       Validators.maxLength(4),
        Validators.minLength(3),
        Validators.pattern(/^\d+$/)
       ]]
     });
 
     this.itemList = db.list('games');
+    this.items = db.list('games').valueChanges();
+    this.items = this.itemList.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+      )
+    );
   }
 
   submit() {
     if (this.form.valid) {
-     alert("Se a agredo tu producto")
+      this.ban=true;
+       this.AltasProductos();
+       this.form.reset();
+       this.form.clearValidators();
     }
     else{
-      alert("FILL ALL FIELDS")
+      this.form.markAllAsTouched();
     }
   }
 
+  BorrarProducto(key:string){
+    this.itemList.remove(key);
+  }
 
-  AltasProductos(nombre:any,descrip:string,consola:string,precio:string,img:number){
+
+  AltasProductos(){
+    const {nombre,descripcion,consola,precio,img} =  this.form.value;
     this.itemList.push({
       consola:consola,
-      descrip:descrip,
+      descrip:descripcion,
       img:img,
-      nombre:nombre.value,
+      nombre:nombre,
       precio:"$" + precio
     });
-    nombre.focus();
-    this.form.reset();
+
 
   }
   ngOnInit():void{

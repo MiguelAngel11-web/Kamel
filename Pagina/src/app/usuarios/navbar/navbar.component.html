@@ -28,18 +28,25 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/question']"><i class="fas fa-comment"></i>Questions</a>
       </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="isLogin">
+        <a class="nav-link" [routerLink]="['/interfazUser']" style="color: #a7d129">{{ user | json }}</a>
+      </li>
     </ul>
 
     <div class="my-2  pb-3 my-lg-0">
-      <li class="nav-item" routerLinkActive="active">
+      <li class="nav-item" routerLinkActive="active" *ngIf="!isLogin" style="list-style:none">
         <a class="nav-link" [routerLink]="['/registro']" type="button" data-toggle="modal" data-target="#exampleModal">
           <i class="fas fa-user-alt"></i>Login/SignIn</a>
+      </li>
+      <li class="nav-item" *ngIf="isLogin" style="list-style:none; color: #a7d129">
+        <a (click)="Salir()" class="nav-link" type="button" data-toggle="modal" data-target="#exampleModal">
+          <i class="fas fa-user-alt"></i>LogOut</a>
       </li>
     </div>
 
     <div class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Buscar Juego" #buscarTexto
-        (keyup)="buscarJuego(buscarTexto.value)">
+        (keyup.enter)="buscarJuego(buscarTexto.value)">
       <button (click)="buscarJuego(buscarTexto.value)" class="btn btn-outline-success my-2 my-sm-0"
         type="button">Buscar</button>
     </div>
