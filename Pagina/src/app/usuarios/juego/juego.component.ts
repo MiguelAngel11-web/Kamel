@@ -16,6 +16,9 @@ export class JuegoComponent implements OnInit {
   nin: boolean = false;
   play: boolean = false;
   id:any;
+  Google:boolean=false;
+  Facebook:boolean=false;
+  Normal:boolean=false;
 
   public isLogin = false;
   public user: any;
@@ -46,7 +49,25 @@ export class JuegoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user = this.api.user;
+    if(this.api.userGoogle){
+      this.user = this.api.userGoogle;
+      this.Google=true;
+      this.Facebook=false;
+      this.Normal=false;
+    }
+    else if(this.api.userFacebook){
+      this.user=this.api.userFacebook
+      this.Facebook=true;
+      this.Google=false;
+      this.Normal=false;
+    }
+    else{
+      this.user = this.api.user;
+      this.Google=false;
+      this.Facebook=false;
+      this.Normal=true;
+    }
+
     if(this.user){
       this.isLogin = true;
     }

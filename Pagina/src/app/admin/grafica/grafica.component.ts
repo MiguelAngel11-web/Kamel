@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { ApiService } from './../servicio/api.service';
 import { FormControl } from '@angular/forms';
 import { Chart } from 'chart.js';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-grafica',
@@ -12,35 +13,25 @@ import { Chart } from 'chart.js';
 export class GraficaComponent {
   mode = new FormControl('over');
 
+
   private intervalUpdate: any = null;
 
   public chart: any = null;
 
-  constructor(private service: ApiService) {}
+  constructor(private api: ApiService) {}
 
   private ngOnInit(): void {
     this.chart = new Chart('realtime', {
-      /*   "type":"doughnut",
-      "data":{
-        "labels":["Red","Blue","Yellow"],
-      "datasets":[
-        {"label":"My First Dataset",
-        "data":[300,50,100],
-      "backgroundColor":["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)"]}]}}); */
       type: 'doughnut',
       data: {
-        labels: ['Xbox One', ' PlayStation 4', ' Nintendo Switch'],
+        labels: [],
         datasets: [
           {
             label: 'Data',
             fill: false,
-            data: [12,10,3],
-            backgroundColor: [
-              'rgb(23, 189, 84)',
-              'rgb(54, 162, 235)',
-              'rgb(194, 17, 67)',
-            ],
-            borderColor: '#168ede',
+            data: [],
+            backgroundColor: [],
+            borderColor: '#eeeeee',
           },
         ],
       },
@@ -57,18 +48,54 @@ export class GraficaComponent {
       },
     });
 
-    this.showData();
-
-		/* this.intervalUpdate = setInterval(function(){
-			this.showData();
-		}.bind(this), 500);  */
+    this.Xbox(); this.Play(); this.Nintendo()
   }
+
+  Xbox(): void {
+
+    this.api.consulta(`https://api-grafica.herokuapp.com/xbox`).subscribe(
+      (res: any) => {
+        console.log("Xbox-->" + Object.keys(res).length);
+        this.chart.data.labels.push("Xbox One");
+        this.chart.data.datasets[0].data.push(Object.keys(res).length);
+        this.chart.data.datasets[0].backgroundColor.push('rgb(23, 189, 84)');
+				this.chart.update();
+        console.log(res);
+      })
+  }
+
+  Play(): void {
+    this.api.consulta(`https://api-grafica.herokuapp.com/play`).subscribe(
+      (res: any) => {
+        console.log("Play-->" +Object.keys(res).length);
+        this.chart.data.labels.push("PlayStation 4");
+        this.chart.data.datasets[0].data.push(Object.keys(res).length);
+        this.chart.data.datasets[0].backgroundColor.push('rgb(54, 162, 235)');
+				this.chart.update();
+        console.log(res);
+      })
+  }
+
+  Nintendo(): void {
+    this.api.consulta(`https://api-grafica.herokuapp.com/nintendo`)
+    .subscribe(
+      (res: any) => {
+        console.log("Nintendo-->" +Object.keys(res).length);
+        this.chart.data.labels.push("Nintendo Switch");
+        this.chart.data.datasets[0].data.push(Object.keys(res).length);
+        this.chart.data.datasets[0].backgroundColor.push('rgb(255, 99, 132)');
+				this.chart.update();
+        console.log(res);
+      })
+
+  }
+
 
   /* private ngOnDestroy(): void {
 		clearInterval(this.intervalUpdate);
 	} */
 
-   	private showData(): void {
+  /*  	private showData(): void {
 		this.getFromAPI().subscribe(response => {
 			if(response.error === false) {
 				let chartTime: any = new Date();
@@ -90,5 +117,6 @@ export class GraficaComponent {
 
 	private getFromAPI(): Observable<any>{
 	  return this.service.consulta();
-	} 
+  }  */
+  ngOnit(){}
 }

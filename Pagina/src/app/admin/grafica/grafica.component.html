@@ -1,22 +1,29 @@
 
-  <mat-sidenav #sidenav [mode]="mode.value">
-    <p><button mat-button (click)="sidenav.toggle()">Menu</button></p>
-    <p>
-      <mat-radio-group class="example-radio-group" [formControl]="mode">
-        <mat-radio-button style="display: none;" value="push">Push</mat-radio-button>
-      </mat-radio-group>
-    </p>
-    <app-panel></app-panel>
-  </mat-sidenav>
+    <mat-sidenav #sidenav [mode]="mode.value">
+      <p><button mat-button (click)="sidenav.toggle()">Menu</button></p>
+      <p>
+        <mat-radio-group class="example-radio-group" [formControl]="mode">
+          <mat-radio-button style="display: none;" value="push">Push</mat-radio-button>
+        </mat-radio-group>
+      </p>
+
+      <app-panel></app-panel>
+
+    </mat-sidenav>
+
+    <p><button class="btn-dark" mat-button (click)="sidenav.toggle()">Desplegar menu</button></p>
 
 <div class="card">
   <canvas id="realtime">{{ chart }}</canvas>
   <div class="card-content">
-   <h3>Realtime</h3>
-   <p>Esta gráfica muestra información en tiempo real desde heroku</p>
-
-
+   <h3>Productos Kamel</h3>
+   <p>Esta gráfica muestra información de los productos que tenemos de diferentes consolas.</p>
 
   </div>
  </div>
+
+
+
+
+
 

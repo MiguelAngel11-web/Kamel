@@ -12,10 +12,34 @@
       <div class="col-8 informacion">
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active letras" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-
-            <div class="jumbotron jumbotron-fluid">
+             <!-- User normal -->
+            <div class="jumbotron jumbotron-fluid" *ngIf="Normal">
               <div class="container home">
                 <h1 class="display-4">Bienvenido <strong>{{ user | json }}</strong></h1>
+                <p class="lead">
+                  Revisa tus consultas.
+                  <br>
+                  <br>Siempre estaran aquí presentes <i class="far fa-smile-wink"></i>
+                </p>
+              </div>
+            </div>
+            <!-- User de google -->
+            <div class="jumbotron jumbotron-fluid" *ngIf="Google">
+              <div class="container home" style="  padding: 10%;">
+                <img src="{{user.photoURL}}" width="10%" height="10%" alt="">
+                <h1 class="display-4">Bienvenido <strong>{{ user.displayName}}</strong></h1>
+                <p class="lead">
+                  Revisa tus consultas.
+                  <br>
+                  <br>Siempre estaran aquí presentes <i class="far fa-smile-wink"></i>
+                </p>
+              </div>
+            </div>
+            <!-- User de facebook -->
+            <div class="jumbotron jumbotron-fluid" *ngIf="Facebook">
+              <div class="container home">
+                <img src="{{user.photoURL}}" width="10%" height="20%" alt="">
+                <h1 class="display-4">Bienvenido <strong>{{ user.displayName}}</strong></h1>
                 <p class="lead">
                   Revisa tus consultas.
                   <br>

@@ -24,6 +24,9 @@ export class InterfazUsuarioComponent implements OnInit {
   favoritos:[]=[]
   itemList: AngularFireList<any>;
   items: Observable<any>;
+  Google:boolean=false;
+  Facebook:boolean=false;
+  Normal:boolean=false;
 
 
   constructor(private juegoService : JuegoService,public activatedRoute: ActivatedRoute,public api : ApiService ,public db: AngularFireDatabase){
@@ -46,8 +49,24 @@ export class InterfazUsuarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user = this.api.user;
-
+    if(this.api.userGoogle){
+      this.user = this.api.userGoogle;
+      this.Google=true;
+      this.Facebook=false;
+      this.Normal=false;
+    }
+    else if(this.api.userFacebook){
+      this.user=this.api.userFacebook
+      this.Facebook=true;
+      this.Google=false;
+      this.Normal=false;
+    }
+    else{
+      this.user = this.api.user;
+      this.Google=false;
+      this.Facebook=false;
+      this.Normal=true;
+    }
     console.log('USUARIO -->', this.user);
   }
 
