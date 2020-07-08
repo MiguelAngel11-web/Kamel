@@ -29,20 +29,56 @@
 
             <div class="container">
               <div id="login">
-                <form method="post">
+                <form [formGroup]="forma" novalidate (ngSubmit)="onSubmit()">
                   <fieldset class="clearfix">
 
-                    <p><span class="fontawesome-user"></span><input #user type="text" value="Correo Electronico"
-                        onBlur="if(this.value == '') this.value = 'Correo Electronico'"
-                        onFocus="if(this.value == 'Correo Electronico') this.value = ''" required></p>
+                    <div class="form-group has-success">
+                      <span class="fontawesome-user"></span>
+                      <input  type="email" placeholder="Correo Electronico"
+                      [class.is-invalid]="EmailIsInvalid"
+                      [class.is-valid]=" EmailIsValid"
+                      formControlName="email">
+
+                      <div class="invalid-feedback"  *ngIf="email.invalid && (email.dirty || email.touched)">
+                        <p *ngIf="email.errors.required">
+                          Digita tu correo electronio.
+                        </p>
+                        <p *ngIf="email.errors.email">
+                          Digita un correo electronico válido.
+                        </p>
+
+
+                      </div>
+
+                    </div>
                     <!-- JS because of IE support; better: placeholder="Username" -->
-                    <p><span class="fontawesome-lock"></span><input #pass type="password" value="Password"
-                        onBlur="if(this.value == '') this.value = 'Password'"
-                        onFocus="if(this.value == 'Password') this.value = ''" required></p>
+                    <div class="form-group has-success">
+                      <span class="fontawesome-lock"></span>
+                      <input  type="password" placeholder="Password"
+                      [class.is-invalid]="PassIsInvalid"
+                      [class.is-valid]=" PassIsValid"
+                      formControlName="password">
+
+                      <div class="invalid-feedback"  *ngIf="password.invalid && (password.dirty || password.touched)">
+                        <p *ngIf="password.errors.required">
+                          Contraseña es requerida
+                        </p>
+                        <p *ngIf="password.errors.minlength">
+                          Contraseña tiene que tener más de cinco carácteres
+                        </p>
+
+                      </div>
+                    </div>
                     <!-- JS because of IE support; better: placeholder="Password"
                      <button id="btn-login" class="btn btn-success" (click)="entrar(user.value, pass.value)">Entrar  </button>
                     -->
+<<<<<<< HEAD
                     <p><input class="botones" type="submit" (click)="entrar(user.value, pass.value)"  value="Sign In"  data-dismiss="modal"></p>
+=======
+                    <a id="btn-fblogin" class="btn btn-danger btn-lg  btn-block"  data-dismiss="modal" (click)="EntrarconGoogle()"><i class="fab fa-google-plus-g"></i>Entrar con Google</a>
+                    <a type="button" class="btn btn-primary btn-lg  btn-block" data-dismiss="modal" (click)="EntrarconFacebook()"><i class="fab fa-facebook"></i> Entrar con Facebook</a>
+                    <p><input class="botones" type="submit"   value="Sign In" data-dismiss="modal"></p>
+>>>>>>> 6ecbdc9d9372b075d8a7050e0e5e948be148d3cc
 
                   </fieldset>
                 </form>

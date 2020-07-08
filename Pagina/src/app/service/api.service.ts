@@ -9,6 +9,8 @@ export class ApiService {
   correo:string;
   user:any;
   id:any;
+  userGoogle:any;
+  userFacebook:any;
   constructor(private httpClient: HttpClient) { }
 
   alta(url:string,body:any) {
@@ -58,5 +60,17 @@ export class ApiService {
     return await this.httpClient.get(url).toPromise();
   }
 
+  GetXbox(){
+    return this.httpClient.get(`https://kamel-6e19d.firebaseio.com/games.json?orderBy="consola"&equalTo="Xbox One"&print=pretty`)
+    .subscribe((data)=>{console.log(data)});
+  }
+
+  GetUsuariosExternos(email:string){
+    return this.httpClient.get(`https://kamel-6e19d.firebaseio.com/usuario.json?orderBy="email"&equalTo="${email}"&print=pretty`)
+  }
+
+  GoogleFacebook(url:string,body:any){
+    return this.httpClient.post(url,body).toPromise().catch((err)=>{err});
+  }
 
 }

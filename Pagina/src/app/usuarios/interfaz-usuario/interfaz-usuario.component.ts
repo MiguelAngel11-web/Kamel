@@ -22,7 +22,13 @@ export class InterfazUsuarioComponent implements OnInit {
   itemListaCompra: AngularFireList<any>;
 
   items: Observable<any>;
+<<<<<<< HEAD
   itemsCompras:Observable<any>;
+=======
+  Google:boolean=false;
+  Facebook:boolean=false;
+  Normal:boolean=false;
+>>>>>>> 6ecbdc9d9372b075d8a7050e0e5e948be148d3cc
 
 
   constructor(private juegoService : JuegoService,public activatedRoute: ActivatedRoute,public api : ApiService ,public db: AngularFireDatabase){
@@ -56,6 +62,7 @@ export class InterfazUsuarioComponent implements OnInit {
     })
   }
 
+<<<<<<< HEAD
   ngOnInit(): void {}
 
   BorrarFav(key: string){
@@ -64,6 +71,28 @@ export class InterfazUsuarioComponent implements OnInit {
 
   BorrarCompra(key: string){
     this.itemListaCompra.remove(key);
+=======
+  ngOnInit(): void {
+    if(this.api.userGoogle){
+      this.user = this.api.userGoogle;
+      this.Google=true;
+      this.Facebook=false;
+      this.Normal=false;
+    }
+    else if(this.api.userFacebook){
+      this.user=this.api.userFacebook
+      this.Facebook=true;
+      this.Google=false;
+      this.Normal=false;
+    }
+    else{
+      this.user = this.api.user;
+      this.Google=false;
+      this.Facebook=false;
+      this.Normal=true;
+    }
+    console.log('USUARIO -->', this.user);
+>>>>>>> 6ecbdc9d9372b075d8a7050e0e5e948be148d3cc
   }
 
 }

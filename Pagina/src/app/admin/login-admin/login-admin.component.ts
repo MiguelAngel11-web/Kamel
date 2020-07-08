@@ -47,7 +47,7 @@ export class LoginAdminComponent implements OnInit {
   entrar(user: string, pass: string) {
     this.items.forEach((element) => {
       for (var i = 0; i < element.length; i++) {
-        if (element[i].usuario == user && element[i].password == pass) {
+        if ((element[i].email == user && element[i].pass == pass) && user == "mike@gmail.com") {
           console.log('Te has logueado');
           this.router.navigate(['/dash']);
         }

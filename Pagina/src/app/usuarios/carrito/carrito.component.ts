@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 
+
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
@@ -26,6 +27,7 @@ export class CarritoComponent implements OnInit {
 
   itemList: AngularFireList<any>;
   items: Observable<any>;
+  itemCompra: AngularFireList<any>;
 
   listaCompra: [] = [];
 
@@ -37,7 +39,8 @@ export class CarritoComponent implements OnInit {
 
   constructor(private juegoService : JuegoService,
     public activatedRoute: ActivatedRoute,
-    public api : ApiService ,public db: AngularFireDatabase){
+    public api : ApiService ,public db: AngularFireDatabase
+    ){
     this.activatedRoute.params.subscribe(params=>{
       this.juego = this.juegoService.getJuego(params['id']);
 
@@ -63,6 +66,7 @@ export class CarritoComponent implements OnInit {
     this.itemList.remove(key);
   }
 
+<<<<<<< HEAD
   FinalizarCompra(nombre:string,precio:string,key:string){
    this.db.database.ref("usuario/"+this.api.id+"/compra")
    .push({
@@ -77,6 +81,18 @@ export class CarritoComponent implements OnInit {
 
 
 
+=======
+
+  Finalizar(nombre:string,precio:string,key:string){
+    console.log(nombre + precio)
+    this.db.database.ref("usuario/"+ this.api.id+"/compra")
+    .push({
+      name:nombre,
+      precio:precio
+    });
+    this.itemList.remove(key);
+  }
+>>>>>>> 6ecbdc9d9372b075d8a7050e0e5e948be148d3cc
 
   ngOnInit() {}
 

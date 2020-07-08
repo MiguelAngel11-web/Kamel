@@ -25,6 +25,7 @@ const routes: Routes = [
   { path: 'admin',component:LoginAdminComponent},
   { path: 'dash',component:DashboardComponent},
   { path: 'grafica',component:GraficaComponent},
+
   //Usuario
   { path: 'home', component: HomeComponent },
   { path: 'navbar/:email', component: NavbarComponent },
