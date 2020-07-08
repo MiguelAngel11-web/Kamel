@@ -39,9 +39,10 @@ export class RegistroComponent implements OnInit {
       validator: Validator.passwordMatchValidator
    });
 
-
+   this.api.GetXbox();
 
   }
+
 
 
   onSubmit(): void {

@@ -31,7 +31,7 @@ export class JuegoComponent implements OnInit {
                                                           this.xbox=false;
                                                           this.nin=false;
                                                       }
-                                                      if(this.juego.consola == 'Xbox 360'){
+                                                      if(this.juego.consola == 'Xbox One'){
                                                           this.play=false;
                                                           this.xbox=true;
                                                           this.nin=false;

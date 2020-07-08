@@ -58,5 +58,10 @@ export class ApiService {
     return await this.httpClient.get(url).toPromise();
   }
 
+  GetXbox(){
+    return this.httpClient.get(`https://kamel-6e19d.firebaseio.com/games.json?orderBy="consola"&equalTo="Xbox One"&print=pretty`)
+    .subscribe((data)=>{console.log(data)});
+  }
+
 
 }

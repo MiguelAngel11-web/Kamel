@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 
+
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
@@ -25,11 +26,13 @@ export class CarritoComponent implements OnInit {
   @Input() juego:Juego;
   itemList: AngularFireList<any>;
   items: Observable<any>;
+  itemCompra: AngularFireList<any>;
 
 
   constructor(private juegoService : JuegoService,
     public activatedRoute: ActivatedRoute,
-    public api : ApiService ,public db: AngularFireDatabase){
+    public api : ApiService ,public db: AngularFireDatabase
+    ){
     this.activatedRoute.params.subscribe(params=>{
       this.juego = this.juegoService.getJuego(params['id']);
 
@@ -51,6 +54,17 @@ export class CarritoComponent implements OnInit {
   }
 
   BorrarProducto(key:string){
+    this.itemList.remove(key);
+  }
+
+
+  Finalizar(nombre:string,precio:string,key:string){
+    console.log(nombre + precio)
+    this.db.database.ref("usuario/"+ this.api.id+"/compra")
+    .push({
+      name:nombre,
+      precio:precio
+    });
     this.itemList.remove(key);
   }
 

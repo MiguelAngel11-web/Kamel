@@ -1,78 +1,74 @@
-import { Component, OnInit } from '@angular/core';;
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from './../servicio/api.service';
-import {  FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-grafica',
   templateUrl: './grafica.component.html',
-  styleUrls: ['./grafica.component.css']
+  styleUrls: ['./grafica.component.css'],
 })
-
 export class GraficaComponent {
   mode = new FormControl('over');
 
   private intervalUpdate: any = null;
 
-	public chart: any = null;
+  public chart: any = null;
 
-  constructor(private service : ApiService) { }
+  constructor(private service: ApiService) {}
 
   private ngOnInit(): void {
-		this.chart = new Chart('realtime', {
-			type: 'bar',
-			data: {
-				labels: [],
-				datasets: [
-				  {
-					label: 'Data',
-					fill: false,
-					data: [],
-					backgroundColor: '#168ede',
-					borderColor: '#168ede'
-				  }
-				]
-			  },
-			  options: {
-				tooltips: {
-					enabled: false
-				},
-				legend: {
-					display: true,
-					position: 'bottom',
-					labels: {
-						fontColor: 'white'
-					}
-				},
-				scales: {
-				  yAxes: [{
-					  ticks: {
-						  fontColor: "white"
-					  }
-				  }],
-				  xAxes: [{
-					ticks: {
-						fontColor: "white",
-						beginAtZero: true
-					}
-				  }]
-				}
-			  }
-		});
+    this.chart = new Chart('realtime', {
+      /*   "type":"doughnut",
+      "data":{
+        "labels":["Red","Blue","Yellow"],
+      "datasets":[
+        {"label":"My First Dataset",
+        "data":[300,50,100],
+      "backgroundColor":["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)"]}]}}); */
+      type: 'doughnut',
+      data: {
+        labels: ['Xbox One', ' PlayStation 4', ' Nintendo Switch'],
+        datasets: [
+          {
+            label: 'Data',
+            fill: false,
+            data: [12,10,3],
+            backgroundColor: [
+              'rgb(23, 189, 84)',
+              'rgb(54, 162, 235)',
+              'rgb(194, 17, 67)',
+            ],
+            borderColor: '#168ede',
+          },
+        ],
+      },
+      options: {
 
-		this.showData();
+        legend: {
+          display: true,
+          position: 'bottom',
+          labels: {
+            fontColor: 'white',
+          },
+        },
 
-		this.intervalUpdate = setInterval(function(){
+      },
+    });
+
+    this.showData();
+
+		/* this.intervalUpdate = setInterval(function(){
 			this.showData();
-		}.bind(this), 500);
-	}
+		}.bind(this), 500);  */
+  }
 
-	private ngOnDestroy(): void {
+  /* private ngOnDestroy(): void {
 		clearInterval(this.intervalUpdate);
-	}
+	} */
 
-	private showData(): void {
+   	private showData(): void {
 		this.getFromAPI().subscribe(response => {
 			if(response.error === false) {
 				let chartTime: any = new Date();
@@ -94,6 +90,5 @@ export class GraficaComponent {
 
 	private getFromAPI(): Observable<any>{
 	  return this.service.consulta();
-	}
-
+	} 
 }
