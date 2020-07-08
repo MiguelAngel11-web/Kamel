@@ -23,8 +23,16 @@ import { map } from 'rxjs/operators';
 export class CarritoComponent implements OnInit {
 
   @Input() juego:Juego;
+
   itemList: AngularFireList<any>;
   items: Observable<any>;
+
+  listaCompra: [] = [];
+
+/*   var postsRef = ref.child("compra"); */
+
+  /* itemCompras: AngularFireList<any>; */
+  compras: Observable<any>;
 
 
   constructor(private juegoService : JuegoService,
@@ -42,6 +50,7 @@ export class CarritoComponent implements OnInit {
       this.api.AgregarProducto(`https://kinder-mountie-14642.herokuapp.com/producto`,body);
       this.itemList = db.list("usuario/"+body.id+"/carrito");
       this.items = db.list("usuario/"+body.id+"/carrito").valueChanges();
+
       this.items = this.itemList.snapshotChanges().pipe(
         map(changes =>
           changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
@@ -53,6 +62,21 @@ export class CarritoComponent implements OnInit {
   BorrarProducto(key:string){
     this.itemList.remove(key);
   }
+
+  FinalizarCompra(nombre:string,precio:string,key:string){
+   this.db.database.ref("usuario/"+this.api.id+"/compra")
+   .push({
+     name:nombre,
+     precio:precio
+   })
+   this.itemList.remove(key);
+  }
+
+
+
+
+
+
 
   ngOnInit() {}
 

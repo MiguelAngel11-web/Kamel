@@ -15,22 +15,22 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">Cantidad</th>
       <th scope="col">Videojuego</th>
       <th scope="col">Precio</th>
-      <th scope="col">SUBTOTAL</th>
       <th scope="col">Eliminar</th>
+      <th scope="col">Comprar</th>
     </tr>
   </thead>
   <tbody>
-    <tr class="table-dark" *ngFor="let p of items | async">
-      <th scope="row"></th>
+    <tr  *ngFor="let p of items | async">
       <td>{{p.name}}</td>
       <td>{{p.precio}}</td>
-      <td>Column content</td>
-      <td><button class="btn btn-danger" (click)="BorrarProducto(p.key)" type="button">Borrar</button></td>
+      <td><input type="text" class="form-control is-valid" placeholder="Enter para borrar" (keyup.enter)="BorrarProducto(p.key)"></td>
+      <td><button type="button" class="btn btn-lg active boton" aria-pressed="true" (click)="FinalizarCompra(p.name,p.precio,p.key)"><i class="fas fa-cart-plus"></i></button></td>
     </tr>
   </tbody>
 </table>
+
+<a class="btn btn-info btn-lg active" type="button" aria-pressed="true" [routerLink]="['/juegos']">Seguir comprando</a>
 
 <app-footer></app-footer>

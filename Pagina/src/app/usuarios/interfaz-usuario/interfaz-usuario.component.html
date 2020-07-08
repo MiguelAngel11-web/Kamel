@@ -12,8 +12,8 @@
       </div>
       <div class="col-8 informacion">
         <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active letras" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
 
+          <div class="tab-pane fade show active letras" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
             <div class="jumbotron jumbotron-fluid">
               <div class="container home">
                 <h1 class="display-4">Bienvenido <strong>{{ user | json }}</strong></h1>
@@ -24,29 +24,45 @@
                 </p>
               </div>
             </div>
-
           </div>
 
           <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
 
+            <table class="table table-hover compras">
+              <thead>
+                <tr class="table">
+                  <th scope="col" colspan="3">
+                    Mis Compras
+                    <i class="fas fa-shopping-basket"></i></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-light" *ngFor="let c of itemsCompras | async">
+                  <td>{{c.name}}</td>
+                  <td>{{c.precio}}</td>
+                  <td><button type="button" class="btn btn-lg active boton" aria-pressed="true" (click)="BorrarCompra(c.key)"><i class="far fa-trash-alt"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
 
 
           </div>
 
           <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
 
-            <table class="table table-hover">
+            <table class="table table-hover favoritos">
               <thead>
                 <tr class="table">
-                  <th scope="col" style="color:'#faf0af'">
+                  <th scope="col" colspan="2">
                     Mis Favoritos
-                    <mat-icon aria-hidden="false" aria-label="Example home icon">favorite</mat-icon></th>
+                    <i class="fas fa-heart"></i>
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="table-light" *ngFor="let f of favoritos">
-                  <th scope="row"></th>
+                <tr class="table-light" *ngFor="let f of items | async">
                   <td>{{f.name}}</td>
+                  <td><button type="button" class="btn btn-lg active boton" aria-pressed="true" (click)="BorrarFav(f.key)"><i class="far fa-trash-alt"></i></button></td>
                 </tr>
               </tbody>
             </table>
