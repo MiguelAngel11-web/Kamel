@@ -89,6 +89,20 @@ export class DashboardComponent implements OnInit {
 
 
   }
+
+
+  updateNombre(key: string, newText: string) {
+    console.log(key);
+    this.itemList.update(key, { nombre: newText });
+  }
+  updatePrecio(key: string, newText: string) {
+    console.log(key);
+    this.itemList.update(key, { precio: newText });
+  }
+  updateConsola(key: string, newText: string) {
+    console.log(key);
+    this.itemList.update(key, { consola: newText });
+  }
   ngOnInit():void{
   }
 

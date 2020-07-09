@@ -31,7 +31,7 @@
       <li class="nav-item" routerLinkActive="active" *ngIf="isLogin" >
         <a *ngIf="Google" class="nav-link" [routerLink]="['/interfazUser']" style="color: #a7d129">{{ user.displayName }}</a>
         <a *ngIf="Facebook" class="nav-link" [routerLink]="['/interfazUser']" style="color: #a7d129">{{ user.displayName }}</a>
-        <a *ngIf="Normal" class="nav-link" [routerLink]="['/interfazUser']" style="color: #a7d129">{{ user.email }}</a>
+        <a *ngIf="Normal" class="nav-link" [routerLink]="['/interfazUser']" style="color: #a7d129">{{ user | json }}</a>
       </li>
     </ul>
 

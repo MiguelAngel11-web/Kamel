@@ -60,6 +60,7 @@ export class InterfazUsuarioComponent implements OnInit {
     })
   }
 
+
   BorrarFav(key:string)
   {
     this.itemList.remove(key);

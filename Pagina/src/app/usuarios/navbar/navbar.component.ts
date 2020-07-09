@@ -43,26 +43,30 @@ export class NavbarComponent implements OnInit {
   }
 
   async Salir(){
+    if(this.Google==true || this.Facebook==true){
+      this.api.userFacebook = null;
+      this.api.userGoogle= null;
+      this.auth.signOut().then(function() {
+    // Sign-out successful.
+        console.log("Data");
+  }).catch(function(error) {
+    // An error happened.
+    console.log(error);
+  });
+      }
+      this.isLogin = false;
+      this.user = null;
+      this.Google=false;
+      this.Facebook=false;
+      this.Normal=false;
     await this.api.LogOut(`https://kinder-mountie-14642.herokuapp.com/salir`)
     .then((res:any)=>{
       if(res){
-      this.isLogin = false;
-      this.user = null;
       this.api.user = null;
-
       }
     })
-    if(this.Google==true || this.Facebook==true){
-    this.auth.signOut().then(function() {
-  // Sign-out successful.
-  this.isLogin = false;
-      this.user = null;
-      this.api.userFacebook = null;
-      this.api.userGoogle= null;
-}).catch(function(error) {
-  // An error happened.
-});
-    }
+
+
 
   }
 

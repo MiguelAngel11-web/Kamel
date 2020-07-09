@@ -149,9 +149,14 @@
                     </thead>
                     <tbody>
                       <tr class="table-dark" *ngFor="let p of items | async">
-                        <th scope="row">{{p.consola}}</th>
-                        <td>{{p.nombre}}</td>
-                        <td>{{p.precio}}</td>
+                        <th scope="row"><input type="text" #consola [value]="p.consola" />
+                           <button type="button" class="btn btn-primary" (click)="updateConsola(p.key, consola.value)">Actualizar</button></th>
+                        <td><input type="text" #nombre [value]="p.nombre" />
+                          <button type="button" class="btn btn-primary" (click)="updateNombre(p.key, nombre.value)">Actualizar</button>
+                        </td>
+                        <td><input type="text" #precio [value]="p.precio" />
+                          <button type="button" class="btn btn-primary" (click)="updatePrecio(p.key, precio.value)">Actualizar</button>
+                        </td>
                         <td><button class="btn btn-danger" (click)="BorrarProducto(p.key)" type="button">Dar de
                             baja</button> </td>
                         <!--  <td><button class="btn btn-danger" (click)="BorrarProducto(p.key)" type="button">Borrar</button> </td>-->
