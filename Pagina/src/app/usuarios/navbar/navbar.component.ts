@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from './../../service/api.service';
 import { ActivatedRoute } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +16,7 @@ export class NavbarComponent implements OnInit {
   Facebook:boolean=false;
   Normal:boolean=false;
 
-  constructor(private router: Router, private api: ApiService, private activatedRoute: ActivatedRoute ) { }
+  constructor(private router: Router, private api: ApiService, private activatedRoute: ActivatedRoute,    public auth: AngularFireAuth ) { }
 
   ngOnInit(): void {
     if(this.api.userGoogle){
@@ -51,6 +52,17 @@ export class NavbarComponent implements OnInit {
 
       }
     })
+    if(this.Google==true || this.Facebook==true){
+    this.auth.signOut().then(function() {
+  // Sign-out successful.
+  this.isLogin = false;
+      this.user = null;
+      this.api.userFacebook = null;
+      this.api.userGoogle= null;
+}).catch(function(error) {
+  // An error happened.
+});
+    }
 
   }
 

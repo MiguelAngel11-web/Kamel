@@ -29,7 +29,7 @@
 
             <div class="container">
               <div id="login">
-                <form [formGroup]="forma" novalidate (ngSubmit)="onSubmit()">
+                <form [formGroup]="forma">
                   <fieldset class="clearfix">
 
                     <div class="form-group has-success">
@@ -37,18 +37,7 @@
                       <input  type="email" placeholder="Correo Electronico"
                       [class.is-invalid]="EmailIsInvalid"
                       [class.is-valid]=" EmailIsValid"
-                      formControlName="email">
-
-                      <div class="invalid-feedback"  *ngIf="email.invalid && (email.dirty || email.touched)">
-                        <p *ngIf="email.errors.required">
-                          Digita tu correo electronio.
-                        </p>
-                        <p *ngIf="email.errors.email">
-                          Digita un correo electronico válido.
-                        </p>
-
-
-                      </div>
+                      formControlName="email" required>
 
                     </div>
                     <!-- JS because of IE support; better: placeholder="Username" -->
@@ -57,24 +46,14 @@
                       <input  type="password" placeholder="Password"
                       [class.is-invalid]="PassIsInvalid"
                       [class.is-valid]=" PassIsValid"
-                      formControlName="password">
-
-                      <div class="invalid-feedback"  *ngIf="password.invalid && (password.dirty || password.touched)">
-                        <p *ngIf="password.errors.required">
-                          Contraseña es requerida
-                        </p>
-                        <p *ngIf="password.errors.minlength">
-                          Contraseña tiene que tener más de cinco carácteres
-                        </p>
-
+                      formControlName="password" required>
                       </div>
-                    </div>
                     <!-- JS because of IE support; better: placeholder="Password"
                      <button id="btn-login" class="btn btn-success" (click)="entrar(user.value, pass.value)">Entrar  </button>
                     -->
                     <a id="btn-fblogin" class="btn btn-danger btn-lg  btn-block"  data-dismiss="modal" (click)="EntrarconGoogle()"><i class="fab fa-google-plus-g"></i>Entrar con Google</a>
                     <a type="button" class="btn btn-primary btn-lg  btn-block" data-dismiss="modal" (click)="EntrarconFacebook()"><i class="fab fa-facebook"></i> Entrar con Facebook</a>
-                    <p><input class="botones" type="submit"   value="Sign In" data-dismiss="modal"></p>
+                    <p><input class="botones" type="submit" (click)="entrar()"  value="Sign In" data-dismiss="modal"></p>
 
                   </fieldset>
                 </form>
