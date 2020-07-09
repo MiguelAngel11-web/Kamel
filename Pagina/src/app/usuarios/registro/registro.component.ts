@@ -19,7 +19,7 @@ import { Router } from '@angular/router';
 export class RegistroComponent implements OnInit {
   forma: FormGroup;
   fb: FormControl;
-  exito = false;
+  conectado = false;
   constructor(private api:ApiService,public builder :FormBuilder, public router: Router) {
 
     this.forma = this.builder.group({
@@ -48,7 +48,7 @@ export class RegistroComponent implements OnInit {
     if(this.forma.valid){
 
       this.RegistroNuevo();
-      this.exito = true;
+      this.conectado = true;
       console.log(this.forma.value);
       this.forma.reset();
     }else{
@@ -71,9 +71,6 @@ export class RegistroComponent implements OnInit {
     this.api.alta(`https://kinder-mountie-14642.herokuapp.com/registro`,body)
     .then((data)=>{console.log(data); this.api.id=data})
     .catch((err)=>{console.log(err)})
-    if(this.forma.value){
-      this.router.navigate(['/home']);
-    }
   }
 
   get username(){return this.forma.get("username")}
